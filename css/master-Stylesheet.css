@@ -6,19 +6,17 @@
 
 header{
   background-color: rgb(51, 51, 51);
-  padding: 20px;
-}
-.header-Title{
-  display: inline-block;
-  text-align: center;
+
+
 }
 .header-Buttons{
   display: inline-block;
-  float: right;
-}
+  }
 body{
     background-image: url("../images/background.png");
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(1px);
+    text-align: -webkit-center;
+    height: 100vh;
 }
 .title{
   text-align: center;
@@ -28,17 +26,24 @@ body{
   background-color: rgb(127, 127, 127);
   margin:5vh;
   padding: 20px;
+  width: 500px;
 }
 .inner{
     background-color: rgb(153, 153, 153);
     padding: 10px;
+
 }
 .header-Buttons button{
   display: inline-block;
   border: none;
-  padding: 10px;
-  margin: 0;
+  margin-left: -2px;
+  margin-right:-2px;
+  padding: 15px;
   background-color: rgb(153, 153, 153);
+
+}
+.header-Buttons button a{
+  text-decoration: none;
 }
 .Image-Carousel{
   background-image: url("../images/placeholder.png");
@@ -49,11 +54,22 @@ body{
 
 
 }
+.buttonSelected{
+  background-color: rgb(51, 51, 51) !important;
+}
 .Carosel{
+  width: 500px;
   text-align: -webkit-center;
   margin:5vh;
   background-color: rgb(127, 127, 127);
 
   padding: 20px;
   height:40vh;
+}
+footer{
+  position:fixed;
+  width: 100%;
+  bottom: 0;
+  height: 2.5rem;
+  background: black;
 }
