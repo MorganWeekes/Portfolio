@@ -22,11 +22,12 @@ body{
   text-align: center;
 }
 .innerBody{
-  text-align: -webkit-center;
+
+  text-align: ;
   background-color: rgb(127, 127, 127);
   margin:5vh;
   padding: 20px;
-  width: 500px;
+  width: 80%;
 }
 .inner{
     background-color: rgb(153, 153, 153);
@@ -46,8 +47,7 @@ body{
   text-decoration: none;
 }
 .Image-Carousel{
-  background-image: url("../images/placeholder.png");
-  background-size:contain;
+  background-size:cover;
   width: 100%;
   height: 100%;
   padding: 2px;
@@ -56,15 +56,42 @@ body{
 }
 .buttonSelected{
   background-color: rgb(51, 51, 51) !important;
+
 }
 .Carosel{
-  width: 500px;
-  text-align: -webkit-center;
+  box-sizing:inherit;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  text-align: -webkit-left;
   margin:5vh;
-  background-color: rgb(127, 127, 127);
-
-  padding: 20px;
   height:40vh;
+
+}
+.outline{
+  background-color: rgb(127, 127, 127);
+  height: 100%;
+  padding: 20px;
+}
+.inlineContent{
+
+  position: inherit;
+  display: inline-flex;
+  text-align: -webkit-center;
+  width:85%;
+}
+.Info{
+  box-sizing:inherit;
+  position:relative;
+  width: 100%;
+  background-color: rgb(127, 127, 127);
+  height:10vh;
+  border-style: solid;
+
+}
+.Info p{
+  height: 100%;
+  background-color: rgb(153, 153, 153);
 }
 footer{
   position:fixed;
@@ -72,4 +99,61 @@ footer{
   bottom: 0;
   height: 2.5rem;
   background: black;
+}
+.leftButton{
+    display: inline-block;
+ mix-blend-mode: multiply;
+    position: relative;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    right: 11%;
+    width: 10%;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+    opacity: .5;
+    background-color: rgba(0,0,0,0.1);
+    border-bottom-right-radius: 110px;  /* 100px of height + 10px of border */
+    border-top-right-radius: 110px; /* 100px of height + 10px of border */
+    border-left: 0;
+    text-decoration: none;
+}
+.rightButton p{
+  position: relative;
+  top:40%;
+  left: 45%;
+  text-decoration: none;
+}
+.leftButton p{
+  position: relative;
+  top:40%;
+  right: -15%;
+}
+.rightButton{
+    mix-blend-mode: multiply;
+    display: inline-block;
+    position:relative;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 91%;
+    width: 10%;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+    opacity: .5;
+    background-color: rgba(0,0,0,0.1);
+    border-bottom-left-radius: 110px;  /* 100px of height + 10px of border */
+    border-top-left-radius: 110px; /* 100px of height + 10px of border */
+    border-left: 0;
+    text-decoration: none;
+}
+.leftButton:hover{
+  background-color: rgba(0,0,0,0.4);
+}
+.rightButton:hover{
+  background-color: rgba(0,0,0,0.4);
 }

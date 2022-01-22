@@ -4,5 +4,5 @@ if(document.body.width > 630 ){
     autosize = document.getElementById('autosize');
 
     autosize.style.width = "500px";
-  
+
 }

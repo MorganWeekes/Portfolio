@@ -21,11 +21,64 @@
         <h1 class="title">Portfolio</h1>
       </div>
     </div>
-    <div class="Carosel" id="autosize">
-      <div class="Image-Carousel">
+    <div class="inlineContent">
+
+      <div class="Carosel" id="autosize">
+
+        <div class="outline">
+          <div class="Image-Carousel" style="background-image: url('images/testImages/0.png')" id="img">
+
+          <a href="javascript:nextImage()" class="rightButton"><p>></p></a>
+          <a href="javascript:previousImage()" class="leftButton"><p><</p></a>
 
       </div>
+      <div>
+      <p class="Info">dsafsdfsdf sdf sdf sdf sdf sdf sdf sd fsdf sdf sdf sdf sdf sdffsd fs df sdf sdf sdf sdf sdf sdf sdf sdf sdf sdf f dsf sdf sdf sdf sdf sdf sfd sdf sdfsd</p>
+
+
+    </div>
+
+
     </div>
   </body>
+  <script defer type="text/javascript">
+  var num = 0;
+  var img;
+  img = document.getElementById("img");
+
+
+    function nextImage(){
+      if(num == 3){
+        num = 0;
+        var loc;
+        loc = "images/testImages/"+num+".png";
+      document.getElementById("img").style.backgroundImage = "url('"+loc+"')";
+    }
+      else{
+        num += 1;
+        var loc;
+        loc = "images/testImages/"+num+".png";
+        document.getElementById("img").style.backgroundImage = "url('"+loc+"')";
+      }
+      console.log('url("images/testImages/'+num+'.png")');
+    }
+    function previousImage(){
+      if(num == 0){
+        num = 3;
+        var loc;
+        loc = "images/testImages/"+num+".png";
+        document.getElementById("img").style.backgroundImage = "url('"+loc+"')";
+        }
+      else{
+        num -= 1;
+        var loc;
+        loc = "images/testImages/"+num+".png";
+        document.getElementById("img").style.backgroundImage = "url('"+loc+"')";
+      }
+        console.log(num);
+        console.log('new url("images/testImages/'+num+'.png")');
+
+    }
+  </script>
   <footer></footer>
 </html>
