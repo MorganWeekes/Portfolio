@@ -99,6 +99,7 @@ footer{
   bottom: 0;
   height: 2.5rem;
   background: black;
+  left: 0;
 }
 .leftButton{
     display: inline-block;
@@ -107,8 +108,8 @@ footer{
     height: 100%;
     top: 0;
     bottom: 0;
-    right: 11%;
-    width: 10%;
+    right: 6%;
+    width: 5%;
     font-size: 20px;
     color: #fff;
     text-align: center;
@@ -138,8 +139,8 @@ footer{
     height: 100%;
     top: 0;
     bottom: 0;
-    left: 91%;
-    width: 10%;
+    left: 95.5%;
+    width: 5%;
     font-size: 20px;
     color: #fff;
     text-align: center;
