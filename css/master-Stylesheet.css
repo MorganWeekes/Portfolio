@@ -63,36 +63,38 @@ body{
   position: relative;
   display: inline-block;
   width: 100%;
-  text-align: -webkit-left;
-  margin:5vh;
-  height:40vh;
+  text-align: -webkit-center;
+
+  height:45vh;
 
 }
 .outline{
   background-color: rgb(127, 127, 127);
   height: 100%;
   padding: 20px;
+  text-align: -webkit-center;
 }
 .inlineContent{
 
   position: inherit;
-  display: inline-flex;
   text-align: -webkit-center;
-  width:85%;
+  width:800px;
 }
 .Info{
+  border-radius: 20px;
+  border: black;
+  border-style: solid;
   box-sizing:inherit;
   position:relative;
   width: 100%;
-  background-color: rgb(127, 127, 127);
+  top: 20px;
+  text-align: -webkit-center;
+  background-color: rgba(0, 0, 0, 0.5);
   height:10vh;
-  border-style: solid;
+
 
 }
-.Info p{
-  height: 100%;
-  background-color: rgb(153, 153, 153);
-}
+
 footer{
   position:fixed;
   width: 100%;
@@ -108,7 +110,7 @@ footer{
     height: 100%;
     top: 0;
     bottom: 0;
-    right: 6%;
+    right: 51%;;
     width: 5%;
     font-size: 20px;
     color: #fff;
@@ -139,7 +141,7 @@ footer{
     height: 100%;
     top: 0;
     bottom: 0;
-    left: 95.5%;
+    left: 51%;
     width: 5%;
     font-size: 20px;
     color: #fff;
