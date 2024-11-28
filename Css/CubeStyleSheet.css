@@ -1,0 +1,94 @@
+.radio-group{
+  width: 100%;
+    display:inline-flex;
+    align-items: initial;
+    justify-content: center;
+  }
+  Padding{
+    padding:5%;
+  }
+  .scene {
+    width: 100%;
+    padding: 0%;
+    display:inline-flex;
+    align-items: initial;
+    justify-content: center;
+    margin-top: 2%;
+    perspective: 50vw;
+  }
+  
+  .cube {
+    width: 40vw;
+    height: 40vw;
+    transform-style: preserve-3d;
+    transform: translateZ(-300px);
+    transition: transform 1s;
+    transform: rotate(rotateX(var(--mouse-x))  rotateY(var(--mouse-y)));
+    }
+
+  .cube.show-front  { transform: translateZ(-20vw)}
+  .cube.show-right  { transform: translateZ(-20vw) rotateY( -90deg); }
+  .cube.show-back   { transform: translateZ(-20vw) rotateY(-180deg); }
+  .cube.show-left   { transform: translateZ(-20vw) rotateY(  90deg); }
+  .cube.show-top    { transform: translateZ(-20vw) rotateX( -90deg); }
+  .cube.show-bottom { transform: translateZ(-20vw) rotateX(  90deg); }
+
+
+  .cube__face {
+    border-radius: 10vw;
+    position: absolute;
+    width: 40vw;
+    height: 40vw;
+    line-height: 50vw;
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+  }
+  
+  .cube__face--front  {
+    background: rgba(255, 255, 255, 1);
+}
+  .cube__face--right  {
+    background: rgba(255, 255, 255,1);
+  }
+  .cube__face--back   {
+     background: rgba(255, 255, 255, 1);
+    }
+  .cube__face--left   { 
+    background: rgba(255, 255, 255, 1);
+}
+  .cube__face--top    { 
+    background: rgba(255, 255, 255, 1);
+}
+  .cube__face--bottom {
+    background: rgba(255, 255, 255, 1);
+    }
+  
+
+  
+  .cube__face--front  { 
+    
+    transform:  translateZ(20vw);  
+
+  
+  }
+  .cube__face--right  { transform: rotateY( 90deg) translateZ(20vw); }
+  .cube__face--back   { transform: rotateY(180deg) translateZ(20vw); }
+  .cube__face--left   { transform: rotateY(-90deg) translateZ(20vw); }
+  .cube__face--top    { transform: rotateX( 90deg) translateZ(20vw); }
+  .cube__face--bottom { transform: rotateX(-90deg) translateZ(20vw); }
+  
+  label { margin-right: 10px; }
+  
+  iframe{    
+    max-width: -webkit-fill-available;
+    min-width: -webkit-fill-available;
+    max-height: -webkit-fill-available;
+    min-height: -webkit-fill-available;
+    border-radius: 10vw;
+    outline: none;
+    outline-style: none;
+    border-style: solid;
+    border-color: black;
+  }

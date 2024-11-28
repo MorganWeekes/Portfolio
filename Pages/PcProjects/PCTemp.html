@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Morgans Portfolio</title>
+    <link rel="stylesheet" href="../../Css/Stylesheet.css">
+</head>
+<body>
+    <header>
+        
+        <nav>
+            <button class="nav-btn" onclick="window.location.href = '../../index.html'">Home</button>
+            <button class="nav-btn" onclick="window.location.href = '../../pages/about.html'">About</button>
+            <button class="nav-btn">Contact</button>
+        </nav>
+    </header>
+    <main>
+
+    <main>
+        <p id="pcName" class="Aboutmaintext">About me</p>
+        <img id="main" class="logo" src="../../Assets/Pictures/icon.png" alt="Logo">
+ 
+      
+    </main>
+    <script>
+        ThisUrl = window.location.href;
+        loc = ThisUrl.replace(ThisUrl.split("/")[ThisUrl.split("/").length - 1], "");
+        const GetName = async file => {
+            const response = await fetch(file)
+            const text = await response.text()
+            document.getElementById("pcName").innerHTML = text.replace('name: "','').replace('"','');
+        }
+        GetName(loc + "info/" + window.location.href.split("#")[1].toString() + ".txt");
+        document.getElementById("main").src = (loc + "images/" + window.location.href.split("#")[1].toString() + ".jpeg"); 
+    </script>
+</body>
+</html>

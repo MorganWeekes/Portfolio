@@ -1,80 +1,49 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/master-Stylesheet.css">
-    <script type="text/javascript" src="scripts/script.js" defer></script>
-    <title>Morgan Weekes Portfolio</title>
-  </head>
-  <header>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Morgans Portfolio</title>
+    <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="./Css/Stylesheet.css">
+</head>
+<body>
+    <header class="mainheader">
+        
+        <nav>
+            <button class="nav-btn" onclick="window.location.href = 'index.html'">Home</button>
+            <button class="nav-btn" onclick="window.location.href = './pages/about.html'">About</button>
+            <button class="nav-btn">Contact</button>
+        </nav>
+    </header>
+    <main>
+        <img class="logo" src="./Assets/Pictures/icon.png" alt="Logo">
+        <p id="maintext" class="maintext">Morgan </br>Weekes</p>
+        <p class="maintextunder">Computer Technician & app / software Developer</p>
 
-    <div class="header-Buttons">
-        <button class="buttonSelected" type="button" name="button"><a  href="#">Home</a></button>
-        <button type="button" name="button"><a href="about.html">About</a></button>
-        <button type="button" name="button"><a href="social.html">Social</a></button>
+        <button class="about" onclick="window.location.href = './pages/about.html'">About Me</button>
+        <div id="image-gallery" class="image-gallery">
+
+            <a href="./Pages/PcProjects/PCTemp.html#Project1"><img src="./Pages/PcProjects/images/project1.jpeg" alt=""></a>
+            <a href="./Pages/PcProjects/PCTemp.html#Project2"><img src="./Pages/PcProjects/images/project2.jpeg" alt=""></a>
+            <a href="./Pages/PcProjects/PCTemp.html#Project3"><img src="./Pages/PcProjects/images/project3.jpeg" alt=""></a>
+            <a href="./Pages/PcProjects/PCTemp.html#Project4"><img src="./Pages/PcProjects/images/project4.jpeg" alt=""></a>
+
+        </div>
     </div>
-  </header>
-  <body>
-    <div class="innerBody" id="autosize">
-      <div class="inner">
-        <h1 class="title">Morgan Weekes</h1>
-        <h1 class="title">Portfolio</h1>
-      </div>
-    </div>
-    <div class="inlineContent">
-
-      <div class="Carosel" id="autosize">
-
-        <div class="outline">
-          <div class="Image-Carousel" style="background-image: url('images/testImages/0.png')" id="img">
-
-          <a href="javascript:nextImage()" class="rightButton"><p>></p></a>
-          <a href="javascript:previousImage()" class="leftButton"><p><</p></a>
-      </div>
-      <div class="Info">
-        <a>dsafsdfsdf sdf sdf sdf sdf sdf sdf sd fsdf sdf sdf sdf sdf sdffsd fs df sdf sdf sdf sdf sdf sdf sdf sdf sdf sdf f dsf sdf sdf sdf sdf sdf sfd sdf sdfsd</a>
-    </div>
-
-    </div>
-  </body>
-  <script defer type="text/javascript">
-  var num = 0;
-  var img;
-  img = document.getElementById("img");
-
-
-    function nextImage(){
-      if(num == 3){
-        num = 0;
-        var loc;
-        loc = "images/testImages/"+num+".png";
-      document.getElementById("img").style.backgroundImage = "url('"+loc+"')";
+        
+    </main>
+    <script>
+    if(window.navigator.userAgent.toString().includes("Android")){
+        document.getElementById("image-gallery").style.gridTemplateColumns.repeat = "3, 1fr" 
     }
-      else{
-        num += 1;
-        var loc;
-        loc = "images/testImages/"+num+".png";
-        document.getElementById("img").style.backgroundImage = "url('"+loc+"')";
-      }
-      console.log('url("images/testImages/'+num+'.png")');
-    }
-    function previousImage(){
-      if(num == 0){
-        num = 3;
-        var loc;
-        loc = "images/testImages/"+num+".png";
-        document.getElementById("img").style.backgroundImage = "url('"+loc+"')";
-        }
-      else{
-        num -= 1;
-        var loc;
-        loc = "images/testImages/"+num+".png";
-        document.getElementById("img").style.backgroundImage = "url('"+loc+"')";
-      }
-        console.log(num);
-        console.log('new url("images/testImages/'+num+'.png")');
+    else{
 
-    }
-  </script>
-  <footer></footer>
+    } 
+
+</script>
+</body>
 </html>
