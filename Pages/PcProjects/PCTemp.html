@@ -32,6 +32,7 @@
         const GetName = async file => {
             const response = await fetch(file)
             const text = await response.text()
+            console.warn(text);
             document.getElementById("pcName").innerHTML = text.replace('name: "','').replace('"','');
         }
         GetName(loc + "info/" + window.location.href.split("#")[1].toString() + ".txt");

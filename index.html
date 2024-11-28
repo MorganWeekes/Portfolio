@@ -43,6 +43,18 @@
     }
     else{
 
+    }
+    if(window.navigator.userAgent.toString().includes("ios")){
+        document.getElementById("image-gallery").style.gridTemplateColumns.repeat = "3, 1fr" 
+    }
+    else{
+
+    } 
+    if(window.navigator.userAgent.toString().includes("apple")){
+        document.getElementById("image-gallery").style.gridTemplateColumns.repeat = "3, 1fr" 
+    }
+    else{
+
     } 
 
 </script>
