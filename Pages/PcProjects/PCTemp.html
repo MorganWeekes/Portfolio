@@ -23,17 +23,21 @@
     <main>
         <p id="pcName" class="Aboutmaintext">About me</p>
         <img id="main" class="logo" src="../../Assets/Pictures/icon.png" alt="Logo">
- 
+        <br></br>
+        <p id="pcInfo" class="Aboutmaintext">About me</p>
       
     </main>
     <script>
         ThisUrl = window.location.href;
         loc = ThisUrl.replace(ThisUrl.split("/")[ThisUrl.split("/").length - 1], "");
         const GetName = async file => {
-            const response = await fetch(file)
-            const text = await response.text()
-            console.warn(text);
-            document.getElementById("pcName").innerHTML = text.replace('name: "','').replace('"','');
+            const response = await fetch(file);
+            const text = await response.text();
+           
+            sections = text.replace("\r","").replace("\n","").split(",");
+            console.log(sections);
+            document.getElementById("pcName").innerHTML = sections[0].replace('name: "','').replace('"','');
+            document.getElementById("pcInfo").innerHTML = sections[1].replace('info: "','').replace('"','');
         }
         GetName(loc + "info/" + window.location.href.split("#")[1].toString() + ".txt");
         document.getElementById("main").src = (loc + "images/" + window.location.href.split("#")[1].toString() + ".jpeg"); 
