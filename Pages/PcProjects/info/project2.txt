@@ -1,1 +1,2 @@
-name: "Corsiar And LianLi Build" 
+name: "Corsiar And LianLi Build",
+info: "ble bloo" 
