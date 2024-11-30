@@ -25,7 +25,7 @@ header{
   border-color: #ffffff;
   border-radius: 195px;
   border-style: solid;
-  max-height: 250px;
+  max-height: 200px;
   border-width: 4px;
   width: auto;
   margin-bottom: -25px;
@@ -105,7 +105,7 @@ main {
 .maintext{
   color: white;
   font-weight: 300;
-  font-size: 102px;
+  font-size: 82px;
   line-height: 1.1;
   letter-spacing: -0.035em;
   text-align: center;
@@ -113,7 +113,7 @@ main {
   
 }
 .maintextunder{
-  font-size: 30px;
+  font-size: 35px;
   padding-bottom:20px ;
   color:#333232;
 }
