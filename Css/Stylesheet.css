@@ -98,7 +98,7 @@ main {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .image-gallery img{
-  max-width: 400px;
+  max-width: 350px;
   height: auto;
   width: 100%;
   border-radius: 10px;
@@ -146,6 +146,7 @@ main {
   .image-gallery {
     border-radius: 20px;
     padding: 20px;
+    justify-self: center;
     background-color: #ffffff05;
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Two columns */
