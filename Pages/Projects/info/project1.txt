@@ -1,2 +1,0 @@
-name: "Corsiar And LianLi Build",
-info: "ble bloo" 

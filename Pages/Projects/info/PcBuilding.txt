@@ -1,0 +1,18 @@
+name: "PC Building",
+
+ <div id="image-gallery" class="image-gallery">
+                
+            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project1-1.png" alt=""></div>
+            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project1-2.png" alt=""></div>
+            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project1-3.png" alt=""></div>
+            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project2-1.png" alt=""></div>
+            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project2-2.png" alt=""></div>
+            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project3-1.png" alt=""></div>  
+            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project3-2.png" alt=""></div> 
+            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project3-3.png" alt=""></div>
+            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project3-4.png" alt=""></div>
+            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project4-1.png" alt=""></div>
+            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project4-2.png" alt=""></div>
+              </div>
+
+
