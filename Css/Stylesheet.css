@@ -207,8 +207,8 @@ main {
       display: grid;
       grid-template-columns: repeat(1, 1fr); /* Two columns */
       gap: 30px;
-      margin-top: 20px;
       justify-items: center; /* Center images horizontally */
       margin-top: -10pc;
+      scale:110%;
     }
   } 
