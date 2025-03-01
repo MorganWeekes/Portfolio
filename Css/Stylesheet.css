@@ -73,12 +73,12 @@ main {
 .about{
   font-family:"Inter Tight";
   background:#777;
-  padding-left: 80px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-right: 80px;
+  padding-left: 3pc;
+  padding-top: 0.3pc;
+  padding-bottom: 0.3pc;
+  padding-right: 3pc;
   border-radius: 25px;
-  margin: 20px;
+  margin: 0.2pc;
   border: none;
   color: white;
   font-size: 20px;
