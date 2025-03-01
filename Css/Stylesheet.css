@@ -183,8 +183,9 @@ main {
     gap: 30px;
     margin-top: 20px;
     justify-items: center; /* Center images horizontally */
-  }
+  
 } 
+}
 
 @media screen and (max-width: 600px) {
 
