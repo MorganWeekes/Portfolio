@@ -1,5 +1,5 @@
 name: "PC Building",
-
+info: "info"
  <div id="image-gallery-items" class="image-gallery">
                 
             <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project1-1.png" alt=""></div>
