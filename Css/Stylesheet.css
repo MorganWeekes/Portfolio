@@ -67,7 +67,6 @@ nav {
 
 /* Main Content */
 main {
-  padding-top: 1pc;
   padding-right: 2pc;
   padding-left: 2pc;
     text-align: center;
@@ -151,14 +150,15 @@ main {
 @media screen and (max-width: 20000px) {
   .image-gallery {
     border-radius: 20px;
+    margin-top: -2%;
     padding: 20px;
     justify-self: center;
     background-color: #ffffff05;
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Two columns */
+    scale:80%;
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    margin-top: 20px;
-    justify-items: center; /* Center images horizontally */
+    justify-items: center;* Center images horizontally */
   }
 } 
 @media screen and (max-width: 1200px) {
