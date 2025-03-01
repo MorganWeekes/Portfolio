@@ -209,5 +209,6 @@ main {
       gap: 30px;
       margin-top: 20px;
       justify-items: center; /* Center images horizontally */
+      margin-top: -10pc;
     }
   } 
