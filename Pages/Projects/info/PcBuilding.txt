@@ -1,6 +1,6 @@
 name: "PC Building",
 
- <div id="image-gallery" class="image-gallery">
+ <div id="image-gallery-items" class="image-gallery-items">
                 
             <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project1-1.png" alt=""></div>
             <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project1-2.png" alt=""></div>
