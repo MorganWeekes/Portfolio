@@ -25,7 +25,7 @@ header{
   border-color: #ffffff;
   border-radius: 195px;
   border-style: solid;
-  max-height: 8pc;
+  max-height: 6pc;
   border-width: 4px;
   width: auto;
   margin-bottom: -25px;
@@ -67,7 +67,9 @@ nav {
 
 /* Main Content */
 main {
-    padding: 2pc;
+  padding-top: 1pc;
+  padding-right: 2pc;
+  padding-left: 2pc;
     text-align: center;
 }
 .about{
@@ -117,11 +119,11 @@ main {
   color: white;
   font-weight: 300;
   font-size: 4pc;
-  line-height: 1.1;
+  line-height: 1;
   letter-spacing: -0.035em;
   text-align: center;
-  padding-bottom: 20px;
-  
+  padding-bottom: 0.1pc;
+
 }
 .maintextunder{
   font-size: 1.5pc;
