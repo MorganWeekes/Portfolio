@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="../Terminal/Css/Stylesheet.css">
+</head>
+<body>
+<div style=" color:white;" >Morgan Software Development</div>
+<p style="  display: inline-block;  color:white;">Terminal <div  style="  display: inline-block;  color:white;"id="cursor">&nbsp ></div></p>
+
+<p style=" color:white;" ></p>
+<textarea readonly class="sideinp" id="sideinp"></textarea>
+<textarea readonly class="inp" id="inp"></textarea>
+
+</body>
+
+<script>
+
+    var cursor = true;
+var speed = 350;
+var Alltext = " ";
+
+setInterval(() => {
+   if(cursor) {
+     document.getElementById('cursor').style.opacity = 0;
+     cursor = false;
+
+   }else {
+     document.getElementById('cursor').style.opacity = 1;
+     cursor = true;
+   }
+}, speed);
+
+var ready = true;
+var times = 0;
+var speed = 20; 
+
+setInterval(() => {
+  if(ready && times < 55){
+    document.getElementById("inp").append( "\n"+ makeid(5));
+    document.getElementById("sideinp").append( "\n"+ ">>>");
+    ready = false;
+    times = times + 1;
+  }
+else{
+
+    ready = true;
+
+    var regex = new RegExp('' + "\n" + '', 'gi');
+    var count = document.getElementById("inp").value.match(regex).length;
+    console.log(count);
+    
+  }
+
+}, speed);
+
+function makeid(length) {
+
+    return ("Folder PATH listing for volume Windows\
+    ");
+}
+
+</script>
+</html>

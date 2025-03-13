@@ -9,10 +9,10 @@
     <title>Morgans Portfolio</title>
     <link rel="stylesheet" href="../../Css/Stylesheet.css">
 </head>
-<body>
-    <header>
+<body id="body">
+    <header id="header">
         
-        <nav>
+        <nav id="nav">
             <button class="nav-btn" onclick="window.location.href = '../../index.html'">Home</button>
             <button class="nav-btn" onclick="window.location.href = '../../pages/about.html'">About</button>
             <button class="nav-btn">Contact</button>
@@ -20,14 +20,16 @@
     </header>
     <main>
 
-    <main>
+    <main id="info">
         <p id="pcName" class="Aboutmaintext">About me</p>
-        <img id="main" class="logo" src="../../Assets/Pictures/icon.png" alt="Logo">
-        <br></br>
+        <div id="imgdiv">
+            <img id="mainimg" class="logo" src="../../Assets/Pictures/icon.png" alt="Logo">
+        </div>
+        <br id="bk">
         <p id="pcInfo" class="Aboutmaintext">About me</p>
       
     </main>
-    <script>
+    <script id="script">
         ThisUrl = window.location.href;
         loc = ThisUrl.replace(ThisUrl.split("/")[ThisUrl.split("/").length - 1], "");
         const GetName = async file => {
@@ -40,7 +42,7 @@
             document.getElementById("pcInfo").innerHTML = sections[1].replace('info: "','').replace('"','');
         }
         GetName(loc + "info/" + window.location.href.split("#")[1].toString() + ".txt");
-        document.getElementById("main").src = (loc + "images/" + window.location.href.split("#")[1].toString() + ".jpeg"); 
+        document.getElementById("mainimg").src = (loc + "images/" + window.location.href.split("#")[1].toString() + ".jpeg"); 
     </script>
 </body>
 </html>
