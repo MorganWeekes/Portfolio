@@ -1,5 +1,5 @@
 
-name: "<iframe  id="terminaliframe" width="100%"   src='../Terminal/terminal.html' onload="{document.getElementById('terminaliframe').height = screen.height; document.getElementsByTagName('body').style = padding='0';console.log(screen.height);document.getElementById('pcName').style.padding = '0px';document.getElementById('info').style.padding = '0px';document.getElementById('info').parentNode.style.padding = '0px';document.getElementById('imgdiv').remove();document.getElementById('pcInfo').remove();document.getElementById('bk').remove()}"></iframe>
+name: "<iframe  id='terminaliframe' width="100%"   src='../Terminal/terminal.html' onload="{document.getElementById('terminaliframe').height = screen.height; document.getElementsByTagName('body').style = padding='0';console.log(screen.height);document.getElementById('pcName').style.padding = '0px';document.getElementById('info').style.padding = '0px';document.getElementById('info').parentNode.style.padding = '0px';document.getElementById('imgdiv').remove();document.getElementById('pcInfo').remove();document.getElementById('bk').remove()}"></iframe>
 
 ,
 
