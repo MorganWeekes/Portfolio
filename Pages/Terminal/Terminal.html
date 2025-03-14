@@ -51,22 +51,49 @@ setInterval(() => {
 
 var ready = true;
 var times = 0;
-var speed = 200;
+var speed = 100;
 var line1speed = 20; 
 var line1 = 0;
+var line2= 0;
 var lineonedone = false;
+var linetwodone = false;
 var lines = 0;
+var runonce = true; 
+var runonce2 = true; 
+var line2time= false;
 setInterval(() => {
+  document.getElementById("sideinp").append( ">>>");
+  
   if(loadFile("./pageinfo/info.txt").length > lines){
+    document.getElementById("sideinp").append( ">>>");
     
     console.log((loadFile("pageinfo/info.txt")[lines]));
     if(line1 < loadFile("pageinfo/info.txt")[lines].split('').length  - 2 && !lineonedone) {
+      if(runonce){
+        document.getElementById("inp").append( "c:\\> ");
+        document.getElementById("sideinp").append( ">>>");
+        runonce = false;    
+      }
       line1 =  line1 + 1;
       text = loadFile("pageinfo/info.txt")[lines].replace("\\n","").split('')[line1 -1];
       document.getElementById("inp").append( text);
+
+    }
+    console.log(line2 < loadFile("pageinfo/info.txt")[lines].split('').length);
+    if(line2time && line2 < loadFile("pageinfo/info.txt")[lines].split('').length  - 2 && !linetwodone) {
+      if(runonce2){
+        document.getElementById("inp").append( "c:\\> ");
+        document.getElementById("sideinp").append( ">>>");
+        runonce2 = false;    
+      }
+      line2 =  line2 + 1;
+      text = loadFile("pageinfo/info.txt")[lines].replace("\\n","").split('')[line2 -1];
+      document.getElementById("inp").append( text);
+
     }
     
     else{
+      line2time = true
     lineonedone = true;
     text = loadFile("pageinfo/info.txt")[lines].replace("\\n","");
     lines = lines + 1;

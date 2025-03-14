@@ -1,5 +1,5 @@
-c:\> echo On \n
-c:\> cd c:\path\for\program \n
+echo On \n
+cd c:\path\for\program \n
 c:\path\for\program\> \n
 c:\path\for\program\> directory changed to c:\path\for\program \n
 c:\path\for\program\> dir \n
