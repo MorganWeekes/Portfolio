@@ -51,7 +51,7 @@ setInterval(() => {
 
 var ready = true;
 var times = 0;
-var speed = 50;
+var speed = 500;
 var line1speed = 20; 
 var line1 = 0;
 var line2= 0;
@@ -67,7 +67,7 @@ setInterval(() => {
   if(loadFile("./pageinfo/info.txt").length > lines){
     document.getElementById("sideinp").append( ">>>");
     
-    console.log((loadFile("pageinfo/info.txt")[lines]));
+
     if(line1 < loadFile("pageinfo/info.txt")[lines].split('').length  - 2 && !lineonedone) {
       if(runonce){
         document.getElementById("inp").append( "c:\\> ");
@@ -79,7 +79,7 @@ setInterval(() => {
       document.getElementById("inp").append( text);
 
     }
-    console.log(line2 < loadFile("pageinfo/info.txt")[lines].split('').length);
+ 
     if(line2time && line2 < loadFile("pageinfo/info.txt")[lines].split('').length  - 2 && !linetwodone) {
       if(runonce2){
         document.getElementById("inp").append( "c:\\> ");
