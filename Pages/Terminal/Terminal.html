@@ -61,7 +61,7 @@ var lines = 0;
 var runonce = true; 
 var runonce2 = true; 
 var line2time= false;
-setInterval(() => {
+const inter = setInterval(() => {
   document.getElementById("sideinp").append( ">>>");
   
   if(loadFile("./pageinfo/info.txt").length > lines){
@@ -104,7 +104,10 @@ setInterval(() => {
 }, speed);
 
 
-
+const clearHandle = setInterval(function() {
+  clearInterval(inter);
+  clearInterval(clearHandle);
+}, 60000);
 
 
 
