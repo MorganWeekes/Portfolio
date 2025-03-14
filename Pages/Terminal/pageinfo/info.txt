@@ -1,0 +1,16 @@
+c:\> echo On \n
+c:\> cd c:\path\for\program \n
+c:\path\for\program\> \n
+c:\path\for\program\> directory changed to c:\path\for\program \n
+c:\path\for\program\> dir \n
+c:\path\for\program\> \n
+c:\path\for\program\> shell start program.exe \n
+c:\path\for\program\> loading services \n
+c:\path\for\program\> starting background tasks \n
+c:\path\for\program\> launching . \n
+c:\path\for\program\> launching ..\n
+c:\path\for\program\> launching ...\n
+c:\path\for\program\> launching ....\n
+c:\path\for\program\> launching .....\n
+c:\path\for\program\> launching ......\n
+c:\path\for\program\> \n

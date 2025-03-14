@@ -21,16 +21,29 @@
 
 <script>
 
-    var cursor = true;
+var cursor = true;
 var speed = 350;
 var Alltext = " ";
+function loadFile(filePath) {
+  var result = null;
+  var resultarr = null;
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.open("GET", filePath, false);
+  xmlhttp.send();
+  if (xmlhttp.status==200) {
+    result = xmlhttp.responseText;
+  }
+  resultarr = result.split('\n');
 
+  return resultarr;
+}
 setInterval(() => {
    if(cursor) {
      document.getElementById('cursor').style.opacity = 0;
      cursor = false;
 
-   }else {
+   }
+   else {
      document.getElementById('cursor').style.opacity = 1;
      cursor = true;
    }
@@ -38,32 +51,35 @@ setInterval(() => {
 
 var ready = true;
 var times = 0;
-var speed = 20; 
-
+var speed = 200;
+var line1speed = 20; 
+var line1 = 0;
+var lineonedone = false;
+var lines = 0;
 setInterval(() => {
-  if(ready && times < 55){
-    document.getElementById("inp").append( "\n"+ makeid(5));
-    document.getElementById("sideinp").append( "\n"+ ">>>");
-    ready = false;
-    times = times + 1;
-  }
-else if(times < 55){
-
-    ready = true;
-
-    var regex = new RegExp('' + "\n" + '', 'gi');
-    var count = document.getElementById("inp").value.match(regex).length;
-    console.log(count);
+  if(loadFile("./pageinfo/info.txt").length > lines){
     
+    console.log((loadFile("pageinfo/info.txt")[lines]));
+    if(line1 < loadFile("pageinfo/info.txt")[lines].split('').length  - 2 && !lineonedone) {
+      line1 =  line1 + 1;
+      text = loadFile("pageinfo/info.txt")[lines].replace("\\n","").split('')[line1 -1];
+      document.getElementById("inp").append( text);
+    }
+    
+    else{
+    lineonedone = true;
+    text = loadFile("pageinfo/info.txt")[lines].replace("\\n","");
+    lines = lines + 1;
+    document.getElementById("inp").append( "\n"+ text);
+    document.getElementById("sideinp").append( "\n"+ ">>>");
+    }
   }
-
 }, speed);
 
-function makeid(length) {
 
-    return ("Folder PATH listing for volume Windows\
-    ");
-}
+
+
+
 
 </script>
 </html>
