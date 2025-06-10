@@ -22,7 +22,7 @@
 <script>
 
 var cursor = true;
-var speed = 350;
+var speed = 400;
 var Alltext = " ";
 function loadFile(filePath) {
   var result = null;
@@ -51,7 +51,7 @@ setInterval(() => {
 
 var ready = true;
 var times = 0;
-var speed = 400;
+var speed = 300;
 var line1speed = 20; 
 var line1 = 0;
 var line2= 0;
@@ -62,37 +62,37 @@ var runonce = true;
 var runonce2 = true; 
 var line2time= false;
 const inter = setInterval(() => {
-  document.getElementById("sideinp").append( ">>>");
+  // document.getElementById("sideinp").append( ">");
   
   if(loadFile("./pageinfo/info.txt").length > lines){
-    document.getElementById("sideinp").append( ">>>");
+    document.getElementById("sideinp").append( "");
     
 
-    if(line1 < loadFile("pageinfo/info.txt")[lines].split('').length  - 2 && !lineonedone) {
-      if(runonce){
-        document.getElementById("inp").append( "c:\\> ");
-        document.getElementById("sideinp").append( ">>>");
-        runonce = false;    
-      }
-      line1 =  line1 + 1;
-      text = loadFile("pageinfo/info.txt")[lines].replace("\\n","").split('')[line1 -1];
-      document.getElementById("inp").append( text);
+    // if(line1 < loadFile("pageinfo/info.txt")[lines].split('').length  - 2 && !lineonedone) {
+    //   if(runonce){
+    //     document.getElementById("inp").append( "c:\\> ");
+    //     document.getElementById("sideinp").append( ">>>");
+    //     runonce = false;    
+    //   }
+    //   line1 =  line1 + 1;
+    //   text = loadFile("pageinfo/info.txt")[lines].replace("\\n","").split('')[line1 -1];
+    //   document.getElementById("inp").append( text);
 
-    }
+    // }
  
-    if(line2time && line2 < loadFile("pageinfo/info.txt")[lines].split('').length  - 2 && !linetwodone) {
-      if(runonce2){
-        document.getElementById("inp").append( "c:\\> ");
-        document.getElementById("sideinp").append( ">>>");
-        runonce2 = false;    
-      }
-      line2 =  line2 + 1;
-      text = loadFile("pageinfo/info.txt")[lines].replace("\\n","").split('')[line2 -1];
-      document.getElementById("inp").append( text);
+    // if(line2time && line2 < loadFile("pageinfo/info.txt")[lines].split('').length  - 2 && !linetwodone) {
+    //   if(runonce2){
+    //     document.getElementById("inp").append( "c:\\> ");
+    //     document.getElementById("sideinp").append( ">>>");
+    //     runonce2 = false;    
+    //   }
+    //   line2 =  line2 + 1;
+    //   text = loadFile("pageinfo/info.txt")[lines].replace("\\n","").split('')[line2 -1];
+    //   document.getElementById("inp").append( text);
 
-    }
+    // }
     
-    else{
+    // else{
       line2time = true
     lineonedone = true;
     text = loadFile("pageinfo/info.txt")[lines].replace("\\n","");
@@ -100,7 +100,7 @@ const inter = setInterval(() => {
     document.getElementById("inp").append( "\n"+ text);
     document.getElementById("sideinp").append( "\n"+ ">>>");
     }
-  }
+  //}
 }, speed);
 
 
