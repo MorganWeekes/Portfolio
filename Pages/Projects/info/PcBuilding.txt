@@ -1,18 +1,29 @@
-name: "PC Building",
-info: "info"
- <div style="margin-top: 25pc !important; scale:125% !important;" id="image-gallery-items" class="image-gallery">
-                
-            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project1-1.png" alt=""></div>
-            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project1-2.png" alt=""></div>
-            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project1-3.png" alt=""></div>
-            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project2-1.png" alt=""></div>
-            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project2-2.png" alt=""></div>
-            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project3-1.png" alt=""></div>  
-            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project3-2.png" alt=""></div> 
-            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project3-3.png" alt=""></div>
-            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project3-4.png" alt=""></div>
-            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project4-1.png" alt=""></div>
-            <div class="scroll"><img src="../../Pages/Projects/images/pcBuilding/project4-2.png" alt=""></div>
-              </div>
+name: "PC Building,
+info: "Here are some examples of my pc building projects"
+<script>document.getElementById('stylesheet').href='Pages/Projects/Pcbuilding/style.css';</script>
+ 
+               <link rel="stylesheet" href="../../Pages/Projects/Pcbuilding/style.css">
+           
 
+<div>
+  <div class="project1">
+      <img src="../../Pages/Projects/images/pcBuilding/Project1-1.png">
+      <img src="../../Pages/Projects/images/pcBuilding/Project1-2.png">
+      <img src="../../Pages/Projects/images/pcBuilding/Project1-3.png">
+  </div>
+  <div class="project2">
+      <img src="../../Pages/Projects/images/pcBuilding/Project2-1.png">
+      <img src="../../Pages/Projects/images/pcBuilding/Project2-2.png">
+  </div>
+    <div class="project3">
+      <img src="../../Pages/Projects/images/pcBuilding/Project3-1.png">
+      <img src="../../Pages/Projects/images/pcBuilding/Project3-2.png">
+      <img src="../../Pages/Projects/images/pcBuilding/Project3-3.png">
+      <img src="../../Pages/Projects/images/pcBuilding/Project3-4.png">
+  </div>
+    <div class="project4">
+      <img src="../../Pages/Projects/images/pcBuilding/Project4-1.png">
+      <img src="../../Pages/Projects/images/pcBuilding/Project4-2.png">
+  </div>
 
+</div>

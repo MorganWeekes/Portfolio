@@ -19,7 +19,7 @@
             <button class="nav-btn">Contact</button>
         </nav>
     </header>
-    <main>
+    <main  id="pc">
         <img class="logo" src="./Assets/Pictures/icon.png" alt="Logo">
         <br><br>
         <p id="maintext" class="maintext">Morgan Weekes</p>
@@ -36,25 +36,57 @@
     </div>
         
     </main>
+
+   <main  id="mobile">
+        <img class="logo" src="./Assets/Pictures/icon.png" alt="Logo">
+        <br><br>
+        <p id="maintext" class="maintext">Morgan Weekes</p>
+        <p class="maintextunder">Computer Technician & app </br>software Developer</p>
+
+        <div id="image-gallery" class="image-gallery">
+                
+            <div><a href="./Pages/Projects/Temp.html#PcBuilding "><img src="./Pages/Projects/images/pcbuilding.jpeg" alt=""></a><h1 class="itemLabel">Pc Building</h1></div>
+            <div><a href="./Pages/Projects/Temp.html#Project2"><img src="./Assets/Pictures/bluescreen.png" alt=""></a><h1 class="itemLabel">Windows / Software Repair</h1></div>
+            <div><a href="./Pages/Projects/Temp.html#Software"><img src="./Assets/Pictures/software.png" alt=""></a><h1 class="itemLabel">Software Development</h1></div>
+            <div><a href="./Pages/Projects/Temp.html#Project4"><img src="./Assets/Pictures/app-development.png" alt=""></a><h1 class="itemLabel">App Development</h1></div>
+
+        </div>
+    </div>
+        
+    </main>
+
     <script>
+        var mobile;
     if(window.navigator.userAgent.toString().includes("Android")){
+        mobile = true;
         document.getElementById("image-gallery").style.gridTemplateColumns.repeat = "3, 1fr" 
     }
     else{
-
+       mobile = false;
     }
     if(window.navigator.userAgent.toString().includes("ios")){
+        mobile = true;
         document.getElementById("image-gallery").style.gridTemplateColumns.repeat = "3, 1fr" 
     }
     else{
-
+        mobile = false;
     } 
     if(window.navigator.userAgent.toString().includes("apple")){
+        mobile = true;
         document.getElementById("image-gallery").style.gridTemplateColumns.repeat = "3, 1fr" 
     }
     else{
-
+    mobile = false;     
     } 
+
+    if(mobile){
+        document.getElementById("pc").style.display = "none";
+    }
+    else{
+        document.getElementById("mobile").style.display = "none";
+    }
+    
+
 
 </script>
 </body>
