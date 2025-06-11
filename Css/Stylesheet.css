@@ -25,7 +25,7 @@ header{
   border-color: #ffffff;
   border-radius: 195px;
   border-style: solid;
-  max-height: 6pc;
+  max-height: 9pc;
   border-width: 4px;
   width: auto;
   margin-bottom: -25px;
@@ -99,7 +99,7 @@ main {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .image-gallery img{
-  max-width: 350px;
+  max-width: 450px;
   height: auto;
   width: 100%;
   border-radius: 10px;
