@@ -2,28 +2,43 @@ name: "PC Building,
 info: "Here are some examples of my pc building projects"
 <script>document.getElementById('stylesheet').href='Pages/Projects/Pcbuilding/style.css';</script>
  
-               <link rel="stylesheet" href="../../Pages/Projects/Pcbuilding/style.css">
-           
-
-<div>
-  <div class="project1">
+<link rel="stylesheet" href="../../Pages/Projects/Pcbuilding/style.css">
+<br>
+<br>
+<h1>Project 1</h1>
+<div class="gallery">
       <img src="../../Pages/Projects/images/pcBuilding/Project1-1.png">
       <img src="../../Pages/Projects/images/pcBuilding/Project1-2.png">
       <img src="../../Pages/Projects/images/pcBuilding/Project1-3.png">
-  </div>
-  <div class="project2">
+</div>
+<br>
+<h1>Project 2</h1>
+<div class="gallery">
       <img src="../../Pages/Projects/images/pcBuilding/Project2-1.png">
       <img src="../../Pages/Projects/images/pcBuilding/Project2-2.png">
-  </div>
-    <div class="project3">
+</div>
+<br>
+<h1>Project 3</h1>
+<div class="gallery">
       <img src="../../Pages/Projects/images/pcBuilding/Project3-1.png">
       <img src="../../Pages/Projects/images/pcBuilding/Project3-2.png">
       <img src="../../Pages/Projects/images/pcBuilding/Project3-3.png">
       <img src="../../Pages/Projects/images/pcBuilding/Project3-4.png">
-  </div>
-    <div class="project4">
+</div>
+<br>
+<h1>Project 4</h1>
+<div class="gallery">
       <img src="../../Pages/Projects/images/pcBuilding/Project4-1.png">
       <img src="../../Pages/Projects/images/pcBuilding/Project4-2.png">
-  </div>
-
 </div>
+<br>
+<h1>Project 5</h1>
+<div class="gallery">
+      <img src="../../Pages/Projects/images/pcBuilding/Project5-1.jpg">
+      <img src="../../Pages/Projects/images/pcBuilding/Project5-2.jpg">
+      <img src="../../Pages/Projects/images/pcBuilding/Project5-3.jpg">
+      <img src="../../Pages/Projects/images/pcBuilding/Project5-4.jpg">
+      <img src="../../Pages/Projects/images/pcBuilding/Project5-5.jpg">
+      <img src="../../Pages/Projects/images/pcBuilding/Project5-7.jpg">
+</div>
+

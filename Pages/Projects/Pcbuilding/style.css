@@ -1,74 +1,30 @@
-.project1{
-border-radius: 10px;
-border-color: white;
-border-style: solid;
-margin-top: 50px;
-align-items: center;
-display:flex;
-width:auto;
-padding: 2%;
-justify-content: space-evenly
-}
 
-.project1 img{
 
-    max-width: 30%;
-    border-radius: 10%;
-    border-style:solid;
-}
 
-.project2{
-border-radius: 10px;
-border-color: white;
-border-style: solid;
-margin-top: 50px;
-align-items: center;
-display:flex;
-width: fit-content;
-padding: 2%;
-}
+    h1 {
+      text-align: center;
+      color: #ffffff;
+      text-decoration: underline;
+    }
 
-.project2 img{
-    margin: 2%;
-    max-width: 30%;
-    min-width: none;
-    border-radius: 10%;
-    border-style:solid;
-}
-.project3{
-border-radius: 10px;
-border-color: white;
-border-style: solid;
-margin-top: 50px;
-align-items: center;
-display:flex;
-width: fit-content;
-padding: 1%;
-justify-content:center;
-flex-wrap: wrap
+    .gallery {
 
-}
+        padding: 10px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-.project3 img{
-    margin: 1%;
-    max-width: 20%;
-    border-radius: 10%;
-    border-style:solid;
-}
-.project4{
-border-radius: 10px;
-border-color: white;
-border-style: solid;
-margin-top: 50px;
-align-items: center;
-display:flex;
-width: fit-content;
-padding: 2%;
-}
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
 
-.project4 img{
-    margin: 2%;
-    max-width: 30%;
-    border-radius: 10%;
-    border-style:solid;
-}
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
