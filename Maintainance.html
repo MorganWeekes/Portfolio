@@ -44,12 +44,18 @@
     </main>
 
        <script>
-          document.getElementById("page-main").style = "height: " + (window.outerHeight-121) + "px"
+        var uAgent = window.navigator.userAgent;
+        if(uAgent.includes("Android") || uAgent.includes("iPhone") ){
+document.getElementById("page-main").style = "height: " + (window.outerHeight-20) + "px"
+        }
+        else{
+              document.getElementById("page-main").style = "height: " + (window.outerHeight-121) + "px"
   
         window.addEventListener('resize', function() {
              document.getElementById("page-main").style = "height: " + (window.outerHeight-121) + "px"
   
             });
+        }
         </script>
 </body>
 </html>
