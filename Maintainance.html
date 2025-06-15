@@ -46,7 +46,7 @@
        <script>
         var uAgent = window.navigator.userAgent;
         if(uAgent.includes("Android") || uAgent.includes("iPhone") ){
-document.getElementById("page-main").style = "height: " + (window.outerHeight-20) + "px"
+document.getElementById("page-main").style = "height: " + window.outerHeight + "px"
         }
         else{
               document.getElementById("page-main").style = "height: " + (window.outerHeight-121) + "px"
