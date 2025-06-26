@@ -10,13 +10,14 @@
     <link rel="stylesheet" href="../Terminal/Css/Stylesheet.css">
 </head>
 <body>
+  <div id="console">
 <div style=" color:white;" >Morgan Software Development</div>
 <p style="  display: inline-block;  color:white;">Terminal <div  style="  display: inline-block;  color:white;"id="cursor">&nbsp ></div></p>
 
 <p style=" color:white;" ></p>
 <textarea readonly class="sideinp" id="sideinp"></textarea>
 <textarea readonly class="inp" id="inp"></textarea>
-
+</div>
 </body>
 
 <script>
@@ -51,7 +52,7 @@ setInterval(() => {
 
 var ready = true;
 var times = 0;
-var speed = 300;
+var speed = 160;
 var line1speed = 20; 
 var line1 = 0;
 var line2= 0;
@@ -66,43 +67,20 @@ const inter = setInterval(() => {
   
   if(loadFile("./pageinfo/info.txt").length > lines){
     document.getElementById("sideinp").append( "");
-    
-
-    // if(line1 < loadFile("pageinfo/info.txt")[lines].split('').length  - 2 && !lineonedone) {
-    //   if(runonce){
-    //     document.getElementById("inp").append( "c:\\> ");
-    //     document.getElementById("sideinp").append( ">>>");
-    //     runonce = false;    
-    //   }
-    //   line1 =  line1 + 1;
-    //   text = loadFile("pageinfo/info.txt")[lines].replace("\\n","").split('')[line1 -1];
-    //   document.getElementById("inp").append( text);
-
-    // }
- 
-    // if(line2time && line2 < loadFile("pageinfo/info.txt")[lines].split('').length  - 2 && !linetwodone) {
-    //   if(runonce2){
-    //     document.getElementById("inp").append( "c:\\> ");
-    //     document.getElementById("sideinp").append( ">>>");
-    //     runonce2 = false;    
-    //   }
-    //   line2 =  line2 + 1;
-    //   text = loadFile("pageinfo/info.txt")[lines].replace("\\n","").split('')[line2 -1];
-    //   document.getElementById("inp").append( text);
-
-    // }
-    
-    // else{
-      line2time = true
+    line2time = true
     lineonedone = true;
     text = loadFile("pageinfo/info.txt")[lines].replace("\\n","");
     lines = lines + 1;
     document.getElementById("inp").append( "\n"+ text);
     document.getElementById("sideinp").append( "\n"+ ">>>");
     }
-  //}
+    console.log(lines == 17);
+console.log(lines);
+    if(lines == 17){
+  document.getElementById("console").style = "display:none";
+    clearInterval(inter);
+}
 }, speed);
-
 
 const clearHandle = setInterval(function() {
   clearInterval(inter);
