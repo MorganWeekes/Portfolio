@@ -21,7 +21,7 @@ if (whte != "off" ){
   "#00CED1"
 ];  
 }
-if(!window.navigator.userAgent.toString().includes("android"))
+if(!window.navigator.userAgent.toString().includes("Android"))
 document.addEventListener("mousemove", (e) => {
   cursor.style.left = e.clientX + "px";
   cursor.style.top = e.clientY+scrollY + "px";
