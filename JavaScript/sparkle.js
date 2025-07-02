@@ -21,7 +21,7 @@ if (whte != "off" ){
   "#00CED1"
 ];  
 }
-if(!window.navigator.userAgent.toString().includes("Mobile")){
+if(window.navigator.userAgent.toString().includes("Mobile") != true){
 document.addEventListener("mousemove", (e) => {
   cursor.style.left = e.clientX + "px";
   cursor.style.top = e.clientY+scrollY + "px";
@@ -29,7 +29,6 @@ document.addEventListener("mousemove", (e) => {
 });
 
 }
-alert(window.navigator.userAgent.toString().includes("Mobile"));
 function createSparkle(x, y) {
   const sparkle = document.createElement("div");
   sparkle.classList.add("cursor-trail");
