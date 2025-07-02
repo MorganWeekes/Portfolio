@@ -27,7 +27,17 @@ document.addEventListener("mousemove", (e) => {
   cursor.style.top = e.clientY+scrollY + "px";
   createSparkle(e.clientX, e.clientY+scrollY);
 });
-
+document.addEventListener(
+  "touchmove",
+  (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    cursor.style.left = touch.clientX + "px";
+    cursor.style.top = touch.clientY+scrollY + "px";
+    createSparkle(touch.clientX, touch.clientY+scrollY);
+  },
+  { passive: false }
+);
 }
 function createSparkle(x, y) {
   const sparkle = document.createElement("div");
@@ -72,14 +82,3 @@ function createSparkle(x, y) {
   }, 1000);
 }
 
-document.addEventListener(
-  "touchmove",
-  (e) => {
-    e.preventDefault();
-    const touch = e.touches[0];
-    cursor.style.left = touch.clientX + "px";
-    cursor.style.top = touch.clientY+scrollY + "px";
-    createSparkle(touch.clientX, touch.clientY+scrollY);
-  },
-  { passive: false }
-);
