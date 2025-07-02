@@ -350,6 +350,10 @@ main {
   --tw-text-opacity: 1;
   color: rgba(17, 24, 39, var(--tw-text-opacity));
 }
+.text-white-900 {
+  --tw-text-opacity: 1;
+  color: white;
+}
 .proimg{
   width: 120%;
   border-radius: 10%;
@@ -448,7 +452,16 @@ main {
 .flex {
   display: flex;
 }
-
+.start{
+      display: flex;
+    line-height: 0.5rem;
+    align-self: flex-start;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: flex-start;
+    flex-direction: column-reverse;
+}
 .justify-between {
   justify-content: space-between;
 }

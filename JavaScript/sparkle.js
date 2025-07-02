@@ -1,5 +1,5 @@
 const cursor = document.querySelector(".cursor");
-var whte = true;
+var whte = "";
 var colors =[];
 if(whte == true){
 colors = [
@@ -11,7 +11,7 @@ colors = [
   "#FFFFFF"
 ];
 }
-else{
+if (whte != "off" ){
   colors = [
  "#FFD700",
   "#FF8C00",
@@ -23,8 +23,8 @@ else{
 }
 document.addEventListener("mousemove", (e) => {
   cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
-  createSparkle(e.clientX, e.clientY);
+  cursor.style.top = e.clientY+scrollY + "px";
+  createSparkle(e.clientX, e.clientY+scrollY);
 });
 
 function createSparkle(x, y) {
@@ -76,8 +76,8 @@ document.addEventListener(
     e.preventDefault();
     const touch = e.touches[0];
     cursor.style.left = touch.clientX + "px";
-    cursor.style.top = touch.clientY + "px";
-    createSparkle(touch.clientX, touch.clientY);
+    cursor.style.top = touch.clientY+scrollY + "px";
+    createSparkle(touch.clientX, touch.clientY+scrollY);
   },
   { passive: false }
 );
