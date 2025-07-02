@@ -29,7 +29,7 @@ document.addEventListener("mousemove", (e) => {
 });
 
 }
-
+alert(window.navigator.userAgent.toString());
 function createSparkle(x, y) {
   const sparkle = document.createElement("div");
   sparkle.classList.add("cursor-trail");
