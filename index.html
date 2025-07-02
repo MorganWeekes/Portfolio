@@ -18,6 +18,13 @@
 
      if(document.URL.toString().includes("#mobile")){
     document.getElementById("pc").style = "display: none !important;"
+    document.getElementById("mobile").style = "display: block !important;"
+    
+    }
+    else if(document.URL.toString().includes("#mobile") == false){
+
+    document.getElementById("pc").style = "display: block !important;"
+    document.getElementById("mobile").style = "display: none !important;"
     
     }
   }
@@ -92,7 +99,7 @@
     </div>
   </section>
 
-  <section id="mobile" style="" class=" text-white-900 skills px-6 py-12 from-transparent to-gray-800">
+  <section id="mobile" style="display: none;" class=" text-white-900 skills px-6 py-12 from-transparent to-gray-800">
 
     <h3 class="text-3xl font-semibold mb-6 text-center">Skills</h3>
 
