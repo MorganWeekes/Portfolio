@@ -21,6 +21,7 @@ if (whte != "off" ){
   "#00CED1"
 ];  
 }
+if(!window.navigator.userAgent.toString().includes("android"))
 document.addEventListener("mousemove", (e) => {
   cursor.style.left = e.clientX + "px";
   cursor.style.top = e.clientY+scrollY + "px";
@@ -30,7 +31,7 @@ document.addEventListener("mousemove", (e) => {
 function createSparkle(x, y) {
   const sparkle = document.createElement("div");
   sparkle.classList.add("cursor-trail");
-  sparkle.style.zIndex = -2;
+
   const color = colors[Math.floor(Math.random() * colors.length)];
   const size = Math.random() * 1 + 5;
   const angle = Math.random() * Math.PI * 2;
