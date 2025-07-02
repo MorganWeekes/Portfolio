@@ -14,17 +14,19 @@
 
     if(window.navigator.userAgent.toString().includes("Mobile") == false){
       document.getElementById("pc").style = "display: block !important;"
+      document.getElementById("mobile").style = "display: none !important;"
+
     }
 
      if(document.URL.toString().includes("#mobile")){
     document.getElementById("pc").style = "display: none !important;"
-    document.getElementById("mobile").style = "display: block !important;"
+    document.getElementById("mobile").style = "display:  block !important;"
     
     }
-    else if(document.URL.toString().includes("#mobile") == false){
+     if(window.navigator.userAgent.toString().includes("Mobile") == true){
 
-    document.getElementById("pc").style = "display: block !important;"
-    document.getElementById("mobile").style = "display: none !important;"
+    document.getElementById("pc").style = "display: none !important;"
+    document.getElementById("mobile").style = "display: block !important;"
     
     }
   }
