@@ -7,8 +7,17 @@
   <link href="Css\Stylesheet.css" rel="stylesheet">
   <script async src="/JavaScript/sparkle.js" rel="JavaScript"></script>
   <script async src="/JavaScript/mainenance.js" rel="JavaScript"></script>
+  <script async>
+    
+    function mobile(){
+      
+    if(window.navigator.userAgent.toString().includes("Mobile") == false){
+      document.getElementById("pc").style = "display: block !important;"
+    }
+  }
+</script>
 </head>
-<body style="text-align:-webkit-center" class="text-white">
+<body onload="mobile()" style="text-align:-webkit-center" class="text-white">
   <div class="cursor"></div>
   <!-- Navbar -->
   <div class="titleclass">
@@ -32,7 +41,7 @@
   </section>
 
   <!-- Projects Section -->
-  <section class=" text-white-900 skills px-6 py-12 from-transparent to-gray-800">
+  <section id="pc" style="display: none;" class=" text-white-900 skills px-6 py-12 from-transparent to-gray-800">
 
     <h3 class="text-3xl font-semibold mb-6 text-center">Skills</h3>
 
@@ -87,7 +96,5 @@
     </div>
   </section>
 </body>
-<script>
-  
-</script>
+
 </html>
