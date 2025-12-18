@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Persistent Whiteboard</title>
+  <style>
+    body {
+      margin: 0;
+      background: #222;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      color: #eee;
+      font-family: sans-serif;
+    }
+    #toolbar {
+      display: flex;
+      gap: 8px;
+      padding: 8px;
+      background: #333;
+      align-items: center;
+    }
+    #toolbar label {
+      font-size: 14px;
+    }
+    canvas {
+      flex: 1;
+      background: #fff;
+      cursor: crosshair;
+      display: block;
+    }
+    button {
+      background: #444;
+      color: #eee;
+      border: 1px solid #555;
+      padding: 4px 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+  <div id="toolbar">
+    <label>
+      Color:
+      <input type="color" id="color" value="#000000" />
+    </label>
+    <label>
+      Size:
+      <input type="range" id="size" min="1" max="30" value="4" />
+    </label>
+    <button id="clear">Clear (does NOT auto-save)</button>
+    <span id="status"></span>
+  </div>
+
+  <canvas id="board"></canvas>
+
+  <script>
+    const canvas = document.getElementById('board');
+    const ctx = canvas.getContext('2d');
+    const colorInput = document.getElementById('color');
+    const sizeInput = document.getElementById('size');
+    const clearBtn = document.getElementById('clear');
+    const statusSpan = document.getElementById('status');
+
+    const STORAGE_KEY = 'persistentWhiteboardCanvas_v1';
+
+    function resizeCanvas() {
+      // Save current image
+      const data = canvas.toDataURL();
+      const { innerWidth, innerHeight } = window;
+      canvas.width = innerWidth;
+      canvas.height = innerHeight - document.getElementById('toolbar').offsetHeight;
+      // Restore image after resize (keeps content)
+      const img = new Image();
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0);
+      };
+      img.src = data;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+
+    let drawing = false;
+    let lastX = 0;
+    let lastY = 0;
+
+    function startDrawing(e) {
+      drawing = true;
+      const { x, y } = getPos(e);
+      lastX = x;
+      lastY = y;
+    }
+
+    function stopDrawing() {
+      if (!drawing) return;
+      drawing = false;
+      saveCanvas();
+    }
+
+    function draw(e) {
+      if (!drawing) return;
+      const { x, y } = getPos(e);
+
+      ctx.strokeStyle = colorInput.value;
+      ctx.lineWidth = sizeInput.value;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+
+      ctx.beginPath();
+      ctx.moveTo(lastX, lastY);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+
+      lastX = x;
+      lastY = y;
+    }
+
+    function getPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return {
+        x: clientX - rect.left,
+        y: clientY - rect.top
+      };
+    }
+
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    window.addEventListener('mouseup', stopDrawing);
+
+    canvas.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      startDrawing(e);
+    }, { passive: false });
+    canvas.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+      draw(e);
+    }, { passive: false });
+    canvas.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      stopDrawing(e);
+    }, { passive: false });
+
+    function saveCanvas() {
+      try {
+        const data = canvas.toDataURL('image/png');
+        localStorage.setItem(STORAGE_KEY, data);
+        statusSpan.textContent = 'Saved';
+        setTimeout(() => statusSpan.textContent = '', 800);
+      } catch (err) {
+        console.error('Save error:', err);
+        statusSpan.textContent = 'Save failed';
+      }
+    }
+
+    function loadCanvas() {
+      const data = localStorage.getItem(STORAGE_KEY);
+      if (!data) return;
+      const img = new Image();
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0);
+      };
+      img.src = data;
+    }
+
+    function hardClear() {
+      if (!confirm('Clear the board? This will overwrite the saved image.')) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      saveCanvas(); // overwrite with blank
+    }
+
+    clearBtn.addEventListener('click', hardClear);
+
+    // Initial sizing
+    resizeCanvas();
+    // Load saved drawing
+    loadCanvas();
+  </script>
+</body>
+</html>
