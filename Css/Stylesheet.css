@@ -366,7 +366,13 @@ main {
   border-color: white;
   opacity: 70%;
 }
-
+.tool-img {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: 1px solid #30363d;
+}
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
