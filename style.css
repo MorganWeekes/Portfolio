@@ -360,3 +360,233 @@ pre code {
 .close:hover {
     color: #58a6ff;
 }
+
+/* ===== MOBILE RESPONSIVE STYLES ===== */
+
+/* Tablets and small laptops */
+@media (max-width: 1024px) {
+    .tools-grid .card {
+        max-width: 45vw;
+        height: auto;
+    }
+
+    .tool-featured {
+        flex-direction: column !important;
+        padding: 20px;
+    }
+
+    .tool-image {
+        max-width: 100%;
+    }
+
+    .image-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+    body {
+        padding: 0 10px;
+    }
+
+    header {
+        padding: 20px 10px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 15px 10px;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 0.95rem;
+        padding: 5px 10px;
+    }
+
+    section, main {
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    #index-tools .tools-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tools-grid .card {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .tool-featured {
+        gap: 20px;
+        padding: 15px;
+    }
+
+    .tool-content {
+        min-width: 0;
+    }
+
+    .tool-content h3 {
+        font-size: 1.2em;
+    }
+
+    .image-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    pre {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .modal-content {
+        padding: 10px;
+    }
+
+    .modal-image {
+        max-width: 95%;
+        max-height: 95%;
+    }
+
+    .close {
+        top: 10px;
+        right: 15px;
+        font-size: 2rem;
+    }
+
+    /* Whiteboard mobile adjustments */
+    .whiteboard-container canvas {
+        height: 400px;
+    }
+
+    #toolbar {
+        gap: 10px;
+        padding: 10px;
+    }
+
+    #toolbar label {
+        font-size: 0.85rem;
+    }
+
+    .btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header p {
+        font-size: 0.9rem;
+    }
+
+    nav {
+        gap: 10px;
+        padding: 10px;
+    }
+
+    nav a {
+        font-size: 0.85rem;
+        padding: 5px 8px;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    .card h3 {
+        font-size: 1.1rem;
+    }
+
+    .tool-content h3 {
+        font-size: 1.1em;
+    }
+
+    .image-grid {
+        gap: 8px;
+    }
+
+    .build-section h4 {
+        font-size: 1rem;
+    }
+
+    /* Terminal mobile adjustments */
+    .terminal-container {
+        margin: 10px 0;
+    }
+
+    .terminal-body {
+        height: 350px;
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    #terminalInput {
+        font-size: 0.85rem;
+    }
+
+    .terminal-prompt {
+        font-size: 0.85rem;
+    }
+
+    /* Whiteboard adjustments for small screens */
+    .whiteboard-container canvas {
+        height: 300px;
+    }
+
+    #toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    #size {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+/* Ensure touch targets are at least 44px for mobile */
+@media (max-width: 768px) {
+    nav a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .btn, button, .tool-link {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
