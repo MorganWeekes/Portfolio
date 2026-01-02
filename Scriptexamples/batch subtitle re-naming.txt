@@ -1,0 +1,17 @@
+@echo off
+setlocal enabledelayedexpansion
+
+REM Align subtitles with video filenames in the same folder
+
+for %%A in (.mkv .mp4) do (
+    set base=%%~nA
+    for %%B in (.srt) do (
+        set sub=%%~nB
+        if I !sub! neq !base! (
+            echo Renaming %%B to !base!.srt
+            ren %%B !base!.srt
+            goto continue
+        )
+    )
+    continue
+)

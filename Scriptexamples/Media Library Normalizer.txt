@@ -1,0 +1,12 @@
+import os
+import re
+
+pattern = re.compile(r"S(\d{2})E(\d{2})")
+
+for file in os.listdir("."):
+    match = pattern.search(file)
+    if match:
+        season, episode = match.groups()
+        new_name = f"The Rookie - S{season}E{episode}.mkv"
+        os.rename(file, new_name)
+        print(f"Renamed: {file} -> {new_name}")

@@ -1,0 +1,23 @@
+typedef void (*PatternFunction)(void);
+
+void pattern_wave();
+void pattern_pulse();
+void pattern_rainbow();
+void pattern_strobe();
+
+PatternFunction patterns[] = {
+    pattern_wave,
+    pattern_pulse,
+    pattern_rainbow,
+    pattern_strobe
+};
+
+uint8_t currentPattern = 0;
+
+void loop() {
+    patterns[currentPattern]();
+}
+
+void nextPattern() {
+    currentPattern = (currentPattern + 1) % (sizeof(patterns) / sizeof(patterns[0]));
+}

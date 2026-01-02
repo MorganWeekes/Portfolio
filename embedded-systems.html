@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Embedded Systems Skills — Morgan</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        .token.comment { color: #6a737d; }
+        .token.keyword { color: #ff7b72; font-weight: bold; }
+        .token.string { color: #a5c9ea; }
+        .token.function { color: #d2a8ff; }
+        .token.number { color: #79c0ff; }
+        .token.operator { color: #ff7b72; }
+        .token.variable { color: #ffa657; }
+        .token.parameter { color: #e6edf3; }
+        .token.type { color: #ffa657; font-style: italic; }
+        .token.class-name { color: #ffa657; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Morgan</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="tools.html">Tools & Builds</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+<main>
+    <h2>Embedded Systems Skills</h2>
+    <div class="skills-grid">
+        <div class="card">
+            <h3>LED Control Systems</h3>
+            <p><strong>RGB Lighting:</strong> Color mixing, brightness control, pattern generation</p>
+            <p><strong>Animation Engines:</strong> Sequence programming, timing control, effect libraries</p>
+            <p><strong>Power Management:</strong> Current limiting, thermal protection, efficiency optimization</p>
+        </div>
+        <div class="card">
+            <h3>Microcontroller Programming</h3>
+            <p><strong>Arduino/Raspberry Pi:</strong> GPIO control, sensor integration, communication protocols</p>
+            <p><strong>Firmware Development:</strong> Real-time operations, interrupt handling, memory management</p>
+            <p><strong>Hardware Interfacing:</strong> I2C, SPI, UART communication, analog/digital conversion</p>
+        </div>
+        <div class="card">
+            <h3>Modular Design</h3>
+            <p><strong>System Architecture:</strong> Component integration, signal routing, power distribution</p>
+            <p><strong>Modular Components:</strong> Reusable modules, standardized interfaces, scalable designs</p>
+            <p><strong>Prototyping:</strong> Rapid development, testing methodologies, iteration cycles</p>
+        </div>
+    </div>
+
+    <h3>Code Example: LED Animation Engine</h3>
+    <p>This C/C++ code demonstrates a modular LED animation system with multiple pattern functions:</p>
+    <pre><code class="language-cpp">typedef void (*PatternFunction)(void);
+
+void pattern_wave();
+void pattern_pulse();
+void pattern_rainbow();
+void pattern_strobe();
+
+PatternFunction patterns[] = {
+    pattern_wave,
+    pattern_pulse,
+    pattern_rainbow,
+    pattern_strobe
+};
+
+uint8_t currentPattern = 0;
+
+void loop() {
+    patterns[currentPattern]();
+}
+
+void nextPattern() {
+    currentPattern = (currentPattern + 1) % (sizeof(patterns) / sizeof(patterns[0]));
+}</code></pre>
+</main>
+<footer>
+    © 2025 Morgan — Programmer & Technician
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>

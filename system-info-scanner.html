@@ -5,19 +5,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>System Info Scanner — Morgan</title>
     <link rel="stylesheet" href="style.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        .token.comment { color: #6a737d; }
+        .token.keyword { color: #ff7b72; font-weight: bold; }
+        .token.string { color: #a5c9ea; }
+        .token.function { color: #d2a8ff; }
+        .token.number { color: #79c0ff; }
+        .token.operator { color: #ff7b72; }
+        .token.variable { color: #ffa657; }
+        .token.parameter { color: #e6edf3; }
+    </style>
 </head>
 <body>
 <header>
     <h1>System Info Scanner</h1>
     <nav>
         <a href="index.html">Home</a>
-        <a href="tools.html">Back to Tools</a>
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="tools.html">Tools & Builds</a>
+        <a href="contact.html">Contact</a>
     </nav>
 </header>
 <main>
-    <img src="images/pc info grabber code.png" alt="System Info UI" class="tool-img" />
-    <p>Windows Forms app using registry and WMI to extract CPU, GPU, RAM, and drive data.</p>
+    <h2>System Info Scanner</h2>
+    <p>A Windows Forms application that uses WMI (Windows Management Instrumentation) and system registry to extract comprehensive hardware and software information.</p>
+
+    <h3>Features</h3>
+    <div class="skills-grid">
+        <div class="card">
+            <h4>Hardware Detection</h4>
+            <p>Automatically detects and displays CPU specifications, GPU details, RAM capacity, and storage information</p>
+        </div>
+        <div class="card">
+            <h4>System Monitoring</h4>
+            <p>Provides real-time monitoring of system performance metrics and device status</p>
+        </div>
+        <div class="card">
+            <h4>Data Export</h4>
+            <p>Exports system information in multiple formats for documentation and analysis</p>
+        </div>
+    </div>
+
+    <h3>Implementation</h3>
+    <pre><code class="language-csharp">using System;
+using System.Management;
+
+class SystemInfoGrabber
+{
+    static void Main()
+    {
+        Console.WriteLine("=== System Information ===\n");
+        
+        GetProcessorInfo();
+        GetMemoryInfo();
+        GetGPUInfo();
+        GetStorageInfo();
+        GetOSInfo();
+        GetNetworkInfo();
+    }
+
+    static void GetProcessorInfo()
+    {
+        ManagementObjectSearcher searcher = new ManagementObjectSearcher(
+            "SELECT * FROM Win32_Processor");
+        
+        foreach (ManagementObject obj in searcher.Get())
+        {
+            Console.WriteLine("Processor: " + obj["Name"]);
+            Console.WriteLine("Cores: " + obj["NumberOfCores"]);
+            Console.WriteLine("Threads: " + obj["NumberOfLogicalProcessors"]);
+            Console.WriteLine("Speed: " + obj["MaxClockSpeed"] + " MHz\n");
+        }
+    }
+
+    static void GetMemoryInfo()
+    {
+        ManagementObjectSearcher searcher = new ManagementObjectSearcher(
+            "SELECT * FROM Win32_PhysicalMemory");
+        
+        long totalMemory = 0;
+        foreach (ManagementObject obj in searcher.Get())
+        {
+            long capacity = Convert.ToInt64(obj["Capacity"]);
+            totalMemory += capacity;
+            Console.WriteLine("RAM: " + (capacity / 1024 / 1024 / 1024) + " GB");
+        }
+        Console.WriteLine("Total Memory: " + (totalMemory / 1024 / 1024 / 1024) + " GB\n");
+    }
+
+    static void GetGPUInfo()
+    {
+        ManagementObjectSearcher searcher = new ManagementObjectSearcher(
+            "SELECT * FROM Win32_VideoController");
+        
+        foreach (ManagementObject obj in searcher.Get())
+        {
+            Console.WriteLine("GPU: " + obj["Name"]);
+            Console.WriteLine("VRAM: " + (Convert.ToInt64(obj["AdapterRAM"]) 
+                / 1024 / 1024) + " MB\n");
+        }
+    }
+
+    static void GetStorageInfo()
+    {
+        ManagementObjectSearcher searcher = new ManagementObjectSearcher(
+            "SELECT * FROM Win32_DiskDrive");
+        
+        foreach (ManagementObject obj in searcher.Get())
+        {
+            long size = Convert.ToInt64(obj["Size"]);
+            Console.WriteLine("Drive: " + obj["Model"]);
+            Console.WriteLine("Size: " + (size / 1024 / 1024 / 1024) + " GB\n");
+        }
+    }
+
+    static void GetOSInfo()
+    {
+        ManagementObjectSearcher searcher = new ManagementObjectSearcher(
+            "SELECT * FROM Win32_OperatingSystem");
+        
+        foreach (ManagementObject obj in searcher.Get())
+        {
+            Console.WriteLine("OS: " + obj["Caption"]);
+            Console.WriteLine("Version: " + obj["Version"]);
+            Console.WriteLine("Build: " + obj["BuildNumber"] + "\n");
+        }
+    }
+
+    static void GetNetworkInfo()
+    {
+        ManagementObjectSearcher searcher = new ManagementObjectSearcher(
+            "SELECT * FROM Win32_NetworkAdapterConfiguration WHERE IPEnabled=true");
+        
+        foreach (ManagementObject obj in searcher.Get())
+        {
+            Console.WriteLine("Network: " + obj["Description"]);
+            string[] ipAddresses = (string[])obj["IPAddress"];
+            if (ipAddresses != null)
+                Console.WriteLine("IP: " + ipAddresses[0] + "\n");
+        }
+    }
+}</code></pre>
 </main>
 <footer>© 2025 Morgan — Programmer & Technician</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Terminal — Morgan</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .terminal-container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: #0d1117;
+            border: 2px solid #30363d;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .terminal-header {
+            background: #161b22;
+            padding: 10px 15px;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .btn-red { background: #f85149; }
+        .btn-yellow { background: #d29922; }
+        .btn-green { background: #3fb950; }
+
+        .terminal-title {
+            color: #8b949e;
+            font-size: 0.9rem;
+            flex: 1;
+            text-align: center;
+        }
+
+        .terminal-body {
+            height: 500px;
+            overflow-y: auto;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .terminal-line {
+            color: #58a6ff;
+            margin: 5px 0;
+        }
+
+        .terminal-output {
+            color: #e6edf3;
+            margin-left: 20px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .terminal-error {
+            color: #f85149;
+        }
+
+        .terminal-input-line {
+            display: flex;
+            color: #58a6ff;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .terminal-prompt {
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        #terminalInput {
+            background: transparent;
+            border: none;
+            color: #e6edf3;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            flex: 1;
+            outline: none;
+            caret-color: #58a6ff;
+        }
+
+        .terminal-body::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .terminal-body::-webkit-scrollbar-track {
+            background: #0d1117;
+        }
+
+        .terminal-body::-webkit-scrollbar-thumb {
+            background: #30363d;
+            border-radius: 4px;
+        }
+
+        .terminal-body::-webkit-scrollbar-thumb:hover {
+            background: #464f58;
+        }
+
+        h2 {
+            border-left: 4px solid #58a6ff;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Morgan</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="tools.html">Tools & Builds</a>
+        <a href="fun.html">Fun</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<main>
+    <h2>Interactive Terminal</h2>
+    <p>A semi-functional terminal to explore Morgan's portfolio. Type <code>help</code> for available commands.</p>
+
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <span class="terminal-button btn-red"></span>
+            <span class="terminal-button btn-yellow"></span>
+            <span class="terminal-button btn-green"></span>
+            <span class="terminal-title">Morgan@Portfolio — /home/morgan</span>
+        </div>
+        <div class="terminal-body" id="terminalBody">
+            <div class="terminal-line">Welcome to Morgan's Interactive Terminal</div>
+            <div class="terminal-line">Type 'help' for available commands</div>
+            <div class="terminal-line"></div>
+        </div>
+        <div class="terminal-input-line">
+            <span class="terminal-prompt">morgan@portfolio:~$</span>
+            <input type="text" id="terminalInput" placeholder="Enter a command..." autofocus />
+        </div>
+    </div>
+</main>
+
+<footer>
+    © 2025 Morgan — Programmer & Technician
+</footer>
+
+<script>
+    const terminalBody = document.getElementById('terminalBody');
+    const terminalInput = document.getElementById('terminalInput');
+    let commandHistory = [];
+    let historyIndex = -1;
+    let currentDirectory = '/home/morgan/portfolio';
+
+    const commands = {
+        'help': `Available Commands:
+  help          - Display this help message
+  about         - About Morgan
+  skills        - List technical skills
+  projects      - View projects
+  contact       - Contact information
+  whoami        - Current user info
+  date          - Display current date/time
+  time          - Display current time only
+  clear/cls     - Clear the terminal
+  pwd           - Print working directory
+  cd [dir]      - Change directory
+  echo [text]   - Echo text back
+  ls/dir        - List portfolio sections
+  cat [file]    - Display file contents
+  tree          - Display directory tree
+  history       - Show command history
+  cowsay [text] - ASCII cow says your message
+  banner [text] - Display ASCII banner text
+  sysinfo       - Display system information
+  calc [expr]   - Simple calculator`,
+        
+        'about': `Morgan - Programmer & Technician
+A skilled developer and system administrator with expertise in:
+- Software Development (C/C++, C#, Python)
+- System Administration & Diagnostics
+- PC Building & Hardware Assembly
+- Automation & Scripting
+- Web Development
+
+Located and available for projects.`,
+        
+        'skills': `Technical Skills:
+Programming:
+  - C/C++ (System programming, optimization)
+  - C# (Applications, .NET)
+  - Python (Automation, scripts)
+  - PowerShell (System administration)
+  - Batch/CMD (Windows automation)
+  - Web (HTML, CSS, JavaScript)
+
+Specializations:
+  - Game Development (Unity)
+  - System Diagnostics
+  - Network Configuration
+  - Hardware Troubleshooting
+  - Media Automation`,
+        
+        'projects': `Featured Projects:
+1. PC Info Grabber - System information scanner (C#)
+2. Automation Scripts - Media workflow automation (Python/Batch)
+3. Custom PC Builds - 5 completed builds with documentation
+4. Web Portfolio - This website you're viewing now!
+5. Embedded Systems - Microcontroller programming
+
+View more at /projects`,
+        
+        'contact': `Contact Information:
+Email: morganweekes@hotmail.co.uk
+GitHub: github.com/morgan
+Portfolio: Your currently viewing it!
+Location: Available remotely
+
+Feel free to reach out for opportunities or collaboration.`,
+        
+        'whoami': `Current User: morgan
+Host: Portfolio@Morgan-Dev
+Shell: /bin/bash
+Home: /home/morgan
+UID: 1000
+
+You are viewing Morgan's Interactive Portfolio`,
+        
+        'date': new Date().toString(),
+        
+        'pwd': '/home/morgan/portfolio',
+        
+        'ls': `about.html
+skills.html
+projects.html
+tools.html
+technician.html
+programming.html
+automation.html
+embedded-systems.html
+system-info-scanner.html
+terminal.html (current)`,
+        
+        'dir': `about.html
+skills.html
+projects.html
+tools.html
+technician.html
+programming.html
+automation.html
+embedded-systems.html
+system-info-scanner.html
+terminal.html (current)`,
+
+        'time': new Date().toLocaleTimeString(),
+        
+        'clear': 'CLEAR',
+        'cls': 'CLEAR',
+
+        'tree': `portfolio/
+├── index.html
+├── about.html
+├── skills.html
+│   ├── programming.html
+│   ├── technician.html
+│   ├── automation.html
+│   └── embedded-systems.html
+├── projects.html
+├── tools.html
+│   └── system-info-scanner.html
+├── contact.html
+└── terminal.html`
+    };
+
+    const fileSystem = {
+        'about.html': `<html>
+  <title>About Morgan</title>
+  <body>
+    Morgan is a skilled programmer and technician
+    with expertise in multiple programming languages
+    and hardware/software troubleshooting.
+  </body>
+</html>`,
+        'skills.html': `Skills Overview:
+- Programming (C/C++, C#, Python)
+- System Administration
+- PC Building
+- Automation Scripts
+- Web Development`,
+        'contact.html': `Email: morganweekes@hotmail.co.uk
+GitHub: github.com/morgan
+Portfolio: Currently viewing!`
+    };
+
+    function addOutput(text, isError = false) {
+        const line = document.createElement('div');
+        line.className = isError ? 'terminal-output terminal-error' : 'terminal-output';
+        line.textContent = text;
+        terminalBody.appendChild(line);
+        terminalBody.scrollTop = terminalBody.scrollHeight;
+    }
+
+    function getWebGLInfo() {
+        try {
+            const canvas = document.createElement('canvas');
+            const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+            if (!gl) return 'Not supported';
+            const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+            if (debugInfo) {
+                const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+                return renderer || 'Supported';
+            }
+            return 'Supported';
+        } catch (e) {
+            return 'Error detecting';
+        }
+    }
+
+    function processCommand(cmd) {
+        const input = cmd.trim();
+        const lowerInput = input.toLowerCase();
+        
+        if (input === '') return;
+
+        // Add to history
+        commandHistory.push(input);
+        historyIndex = commandHistory.length;
+
+        // Display the command
+        const cmdLine = document.createElement('div');
+        cmdLine.className = 'terminal-line';
+        cmdLine.innerHTML = `<span class="terminal-prompt">morgan@portfolio:~$</span> ${cmd}`;
+        terminalBody.appendChild(cmdLine);
+
+        // Handle clear command
+        if (lowerInput === 'clear' || lowerInput === 'cls') {
+            terminalBody.innerHTML = '';
+            terminalBody.scrollTop = 0;
+            return;
+        }
+
+        // Handle history command
+        if (lowerInput === 'history') {
+            commandHistory.forEach((cmd, idx) => {
+                addOutput(`${idx + 1}  ${cmd}`);
+            });
+            return;
+        }
+
+        // Handle echo command
+        if (lowerInput.startsWith('echo ')) {
+            const text = cmd.substring(5);
+            addOutput(text);
+            return;
+        }
+
+        // Handle cat command
+        if (lowerInput.startsWith('cat ')) {
+            const filename = input.substring(4).trim();
+            if (fileSystem[filename]) {
+                addOutput(fileSystem[filename]);
+            } else {
+                addOutput(`cat: ${filename}: No such file`, true);
+            }
+            return;
+        }
+
+        // Handle cd command
+        if (lowerInput.startsWith('cd ')) {
+            const dir = input.substring(3).trim();
+            if (dir === '..') {
+                addOutput('Navigated to parent directory');
+            } else if (dir === '~' || dir === '/home/morgan') {
+                currentDirectory = '/home/morgan';
+                addOutput('Navigated to home directory');
+            } else {
+                currentDirectory = `/home/morgan/${dir}`;
+                addOutput(`Changed directory to ${currentDirectory}`);
+            }
+            return;
+        }
+
+        // Handle cowsay command
+        if (lowerInput.startsWith('cowsay ')) {
+            const text = input.substring(7);
+            const cow = `
+ ${'_'.repeat(text.length + 2)}
+< ${text} >
+ ${'-'.repeat(text.length + 2)}
+        \\   ^__^
+         \\  (oo)\\_______
+            (__)\\       )\\/\\
+                ||----w |
+                ||     ||`;
+            addOutput(cow);
+            return;
+        }
+
+        // Handle banner command
+        if (lowerInput.startsWith('banner ')) {
+            const text = input.substring(7).toUpperCase();
+            const banner = `
+╔${'═'.repeat(text.length + 2)}╗
+║ ${text} ║
+╚${'═'.repeat(text.length + 2)}╝`;
+            addOutput(banner);
+            return;
+        }
+
+        // Handle calc command
+        if (lowerInput.startsWith('calc ')) {
+            const expr = input.substring(5).trim();
+            try {
+                // Simple safe evaluation (only allow numbers and basic operators)
+                if (/^[0-9+\-*/(). ]+$/.test(expr)) {
+                    const result = eval(expr);
+                    addOutput(`Result: ${result}`);
+                } else {
+                    addOutput('Invalid expression. Use only numbers and +, -, *, /, (, )', true);
+                }
+            } catch (e) {
+                addOutput('Calculation error: ' + e.message, true);
+            }
+            return;
+        }
+
+        // Handle sysinfo command with real hardware detection
+        if (lowerInput === 'sysinfo') {
+            const sysInfo = `System Information:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Hardware:
+  CPU Cores: ${navigator.hardwareConcurrency || 'Unknown'} logical processors
+  Memory: ${navigator.deviceMemory ? navigator.deviceMemory + ' GB' : 'Unknown'}
+  Platform: ${navigator.platform}
+  Architecture: ${navigator.userAgentData?.platform || 'x64'}
+
+Display:
+  Screen Resolution: ${screen.width}x${screen.height}
+  Color Depth: ${screen.colorDepth}-bit
+  Pixel Ratio: ${window.devicePixelRatio}x
+
+Browser:
+  Name: ${navigator.userAgentData?.brands?.[0]?.brand || navigator.userAgent.split(' ')[0]}
+  User Agent: ${navigator.userAgent}
+  Language: ${navigator.language}
+  Cookies: ${navigator.cookieEnabled ? 'Enabled' : 'Disabled'}
+
+Network:
+  Online Status: ${navigator.onLine ? 'Connected' : 'Offline'}
+  Connection: ${navigator.connection?.effectiveType || 'Unknown'}
+  Downlink: ${navigator.connection?.downlink ? navigator.connection.downlink + ' Mbps' : 'Unknown'}
+
+System:
+  Max Touch Points: ${navigator.maxTouchPoints}
+  PDF Viewer: ${navigator.pdfViewerEnabled ? 'Enabled' : 'Disabled'}
+  WebGL: ${getWebGLInfo()}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
+            addOutput(sysInfo);
+            return;
+        }
+
+        // Check for exact command match
+        if (commands[lowerInput]) {
+            addOutput(commands[lowerInput]);
+        } else {
+            // Try to find partial matches
+            const matches = Object.keys(commands).filter(cmd => cmd.includes(lowerInput));
+            if (matches.length > 0) {
+                addOutput(commands[matches[0]]);
+            } else {
+                addOutput(`Command not found: ${input}`, true);
+                addOutput(`Type 'help' for available commands`, true);
+            }
+        }
+    }
+
+    // Handle input
+    terminalInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            const cmd = terminalInput.value;
+            processCommand(cmd);
+            terminalInput.value = '';
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (historyIndex > 0) {
+                historyIndex--;
+                terminalInput.value = commandHistory[historyIndex];
+            }
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            if (historyIndex < commandHistory.length - 1) {
+                historyIndex++;
+                terminalInput.value = commandHistory[historyIndex];
+            } else {
+                historyIndex = commandHistory.length;
+                terminalInput.value = '';
+            }
+        } else if (e.key === 'Tab') {
+            e.preventDefault();
+            const input = terminalInput.value.toLowerCase();
+            const matches = Object.keys(commands).filter(cmd => cmd.startsWith(input));
+            if (matches.length === 1) {
+                terminalInput.value = matches[0];
+            } else if (matches.length > 1) {
+                addOutput('Available: ' + matches.join(', '));
+            }
+        }
+    });
+
+    // Focus on terminal
+    terminalBody.addEventListener('click', function() {
+        terminalInput.focus();
+    });
+</script>
+</body>
+</html>

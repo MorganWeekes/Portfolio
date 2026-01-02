@@ -1,84 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Persistent Whiteboard</title>
-  <style>
-    body {
-      margin: 0;
-      background: #222;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      color: #eee;
-      font-family: sans-serif;
-    }
-    #toolbar {
-      display: flex;
-      gap: 8px;
-      padding: 8px;
-      background: #333;
-      align-items: center;
-    }
-    #toolbar label {
-      font-size: 14px;
-    }
-    canvas {
-      flex: 1;
-      background: #fff;
-      cursor: crosshair;
-      display: block;
-    }
-    button {
-      background: #444;
-      color: #eee;
-      border: 1px solid #555;
-      padding: 4px 10px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #555;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Digital Whiteboard — Morgan</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .whiteboard-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: #161b22;
+            border: 2px solid #30363d;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        #toolbar {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: #0d1117;
+            border-bottom: 1px solid #30363d;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #toolbar label {
+            font-size: 0.95rem;
+            color: #e6edf3;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #color {
+            width: 50px;
+            height: 30px;
+            border: 2px solid #30363d;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #size {
+            width: 120px;
+        }
+
+        canvas {
+            width: 100%;
+            height: 600px;
+            background: #fff;
+            cursor: crosshair;
+            display: block;
+        }
+
+        .btn {
+            background: #161b22;
+            color: #e6edf3;
+            border: 1px solid #30363d;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #30363d;
+            border-color: #58a6ff;
+        }
+
+        .btn-danger {
+            background: #161b22;
+            border-color: #f85149;
+            color: #f85149;
+        }
+
+        .btn-danger:hover {
+            background: #f85149;
+            color: #0d1117;
+        }
+
+        #status {
+            color: #3fb950;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        h2 {
+            border-left: 4px solid #58a6ff;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-  <div id="toolbar">
-    <label>
-      Color:
-      <input type="color" id="color" value="#000000" />
-    </label>
-    <label>
-      Size:
-      <input type="range" id="size" min="1" max="30" value="4" />
-    </label>
-    <button id="clear">Clear (does NOT auto-save)</button>
-    <span id="status"></span>
-  </div>
+<header>
+    <h1>Morgan</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="tools.html">Tools & Builds</a>
+        <a href="fun.html">Fun</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
 
-  <canvas id="board"></canvas>
+<main>
+    <h2>Digital Whiteboard</h2>
+    <p>A persistent drawing canvas with auto-save functionality. Your drawings are saved automatically in your browser's local storage.</p>
+
+    <div class="whiteboard-container">
+        <div id="toolbar">
+            <label>
+                Color:
+                <input type="color" id="color" value="#000000" />
+            </label>
+            <label>
+                Brush Size:
+                <input type="range" id="size" min="1" max="30" value="4" />
+                <span id="sizeValue">4px</span>
+            </label>
+            <button class="btn" id="save">Save Now</button>
+            <button class="btn btn-danger" id="clear">Clear Canvas</button>
+            <span id="status"></span>
+        </div>
+
+        <canvas id="board"></canvas>
+    </div>
+</main>
+
+<footer>
+    © 2025 Morgan — Programmer & Technician
+</footer>
 
   <script>
     const canvas = document.getElementById('board');
     const ctx = canvas.getContext('2d');
     const colorInput = document.getElementById('color');
     const sizeInput = document.getElementById('size');
+    const sizeValue = document.getElementById('sizeValue');
     const clearBtn = document.getElementById('clear');
+    const saveBtn = document.getElementById('save');
     const statusSpan = document.getElementById('status');
 
     const STORAGE_KEY = 'persistentWhiteboardCanvas_v1';
 
+    // Update size display
+    sizeInput.addEventListener('input', () => {
+      sizeValue.textContent = sizeInput.value + 'px';
+    });
+
     function resizeCanvas() {
-      // Save current image
-      const data = canvas.toDataURL();
-      const { innerWidth, innerHeight } = window;
-      canvas.width = innerWidth;
-      canvas.height = innerHeight - document.getElementById('toolbar').offsetHeight;
-      // Restore image after resize (keeps content)
-      const img = new Image();
-      img.onload = () => {
-        ctx.drawImage(img, 0, 0);
-      };
-      img.src = data;
+      const container = canvas.parentElement.parentElement;
+      canvas.width = container.clientWidth - 4; // Account for borders
+      canvas.height = 600;
+      loadCanvas();
     }
 
     window.addEventListener('resize', resizeCanvas);
@@ -149,11 +228,11 @@
       try {
         const data = canvas.toDataURL('image/png');
         localStorage.setItem(STORAGE_KEY, data);
-        statusSpan.textContent = 'Saved';
-        setTimeout(() => statusSpan.textContent = '', 800);
+        statusSpan.textContent = 'Saved ✓';
+        setTimeout(() => statusSpan.textContent = '', 1500);
       } catch (err) {
         console.error('Save error:', err);
-        statusSpan.textContent = 'Save failed';
+        statusSpan.textContent = 'Save failed ✗';
       }
     }
 
@@ -168,12 +247,16 @@
     }
 
     function hardClear() {
-      if (!confirm('Clear the board? This will overwrite the saved image.')) return;
+      if (!confirm('Clear the entire canvas? This will delete your saved drawing.')) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      saveCanvas(); // overwrite with blank
+      saveCanvas();
+      statusSpan.textContent = 'Cleared';
     }
 
     clearBtn.addEventListener('click', hardClear);
+    saveBtn.addEventListener('click', () => {
+      saveCanvas();
+    });
 
     // Initial sizing
     resizeCanvas();

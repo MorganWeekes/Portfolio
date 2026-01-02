@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Technician Skills — Morgan</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        .token.comment { color: #6a737d; }
+        .token.keyword { color: #ff7b72; font-weight: bold; }
+        .token.string { color: #a5c9ea; }
+        .token.function { color: #d2a8ff; }
+        .token.number { color: #79c0ff; }
+        .token.operator { color: #ff7b72; }
+        .token.variable { color: #ffa657; }
+        .token.parameter { color: #e6edf3; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Morgan</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="tools.html">Tools & Builds</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+<main>
+    <h2>Technician Skills</h2>
+    <div class="skills-grid">
+        <div class="card">
+            <h3>System Diagnostics</h3>
+            <p><strong>Hardware Testing:</strong> Component failure analysis, stress testing, performance benchmarking</p>
+            <p><strong>Software Troubleshooting:</strong> OS issues, driver conflicts, application errors</p>
+            <p><strong>Network Analysis:</strong> Connectivity issues, configuration problems, security assessment</p>
+        </div>
+        <div class="card">
+            <h3>Installation & Setup</h3>
+            <p><strong>Operating Systems:</strong> Windows, Linux installation and configuration</p>
+            <p><strong>Hardware Assembly:</strong> PC building, component compatibility, cable management</p>
+            <p><strong>Software Deployment:</strong> Application installation, system optimization, user training</p>
+        </div>
+        <div class="card">
+            <h3>Repair & Maintenance</h3>
+            <p><strong>Component Replacement:</strong> CPU, RAM, storage, power supplies, cooling systems</p>
+            <p><strong>Data Recovery:</strong> File system repair, backup solutions, data migration</p>
+            <p><strong>Preventive Maintenance:</strong> System cleaning, thermal management, performance monitoring</p>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img class="modal-image" src="" alt="" />
+        </div>
+    </div>
+
+    <h3>Script Examples</h3>
+
+    <h4>System Health Check Script</h4>
+    <p>This PowerShell script performs comprehensive system diagnostics:</p>
+    <pre><code class="language-powershell"># System Health Check Script
+Get-WmiObject -Class Win32_ComputerSystem |
+    Select-Object Name, Manufacturer, Model
+
+Get-WmiObject -Class Win32_OperatingSystem |
+    Select-Object Caption, Version, BuildNumber
+
+Get-WmiObject -Class Win32_Processor |
+    Select-Object Name, NumberOfCores, MaxClockSpeed
+
+Get-WmiObject -Class Win32_PhysicalMemory |
+    Select-Object Capacity, Speed
+
+Get-WmiObject -Class Win32_DiskDrive |
+    Select-Object Model, Size, Status
+
+# Check for system errors in Event Log
+Get-EventLog -LogName System -EntryType Error -Newest 10 |
+    Select-Object TimeGenerated, Source, Message</code></pre>
+
+    <h4>Network Troubleshooting Commands</h4>
+    <p>Essential command-line tools for network diagnostics:</p>
+    <pre><code class="language-batch">@echo off
+echo === Network Diagnostics ===
+echo.
+
+echo IP Configuration:
+ipconfig /all
+echo.
+
+echo Network Connections:
+netstat -ano
+echo.
+
+echo DNS Resolution Test:
+nslookup google.com
+echo.
+
+echo Ping Test:
+ping -t 4 google.com
+echo.
+
+echo Traceroute:
+tracert google.com</code></pre>
+
+    <h3>PC Builds Gallery</h3>
+    <div class="builds-gallery">
+        <div class="build-section">
+            <h4>Project 2</h4>
+            <div class="image-grid">
+                <img src="Pages/Projects/images/pcBuilding/project2-1.png" alt="Project 2 Build - Image 1" />
+                <img src="Pages/Projects/images/pcBuilding/project2-2.png" alt="Project 2 Build - Image 2" />
+            </div>
+        </div>
+
+        <div class="build-section">
+            <h4>Project 3</h4>
+            <div class="image-grid">
+                <img src="Pages/Projects/images/pcBuilding/project3-1.png" alt="Project 3 Build - Image 1" />
+                <img src="Pages/Projects/images/pcBuilding/project3-2.png" alt="Project 3 Build - Image 2" />
+                <img src="Pages/Projects/images/pcBuilding/project3-3.png" alt="Project 3 Build - Image 3" />
+                <img src="Pages/Projects/images/pcBuilding/project3-4.png" alt="Project 3 Build - Image 4" />
+            </div>
+        </div>
+
+        <div class="build-section">
+            <h4>Project 4</h4>
+            <div class="image-grid">
+                <img src="Pages/Projects/images/pcBuilding/Project4-1.png" alt="Project 4 Build - Image 1" />
+                <img src="Pages/Projects/images/pcBuilding/Project4-2.png" alt="Project 4 Build - Image 2" />
+            </div>
+        </div>
+
+        <div class="build-section">
+            <h4>Project 5</h4>
+            <div class="image-grid">
+                <img src="Pages/Projects/images/pcBuilding/Project5-1.jpg" alt="Project 5 Build - Image 1" />
+                <img src="Pages/Projects/images/pcBuilding/Project5-2.jpg" alt="Project 5 Build - Image 2" />
+                <img src="Pages/Projects/images/pcBuilding/Project5-3.jpg" alt="Project 5 Build - Image 3" />
+                <img src="Pages/Projects/images/pcBuilding/Project5-4.jpg" alt="Project 5 Build - Image 4" />
+                <img src="Pages/Projects/images/pcBuilding/Project5-5.jpg" alt="Project 5 Build - Image 5" />
+                <img src="Pages/Projects/images/pcBuilding/Project5-6.jpg" alt="Project 5 Build - Image 6" />
+                <img src="Pages/Projects/images/pcBuilding/Project5-7.jpg" alt="Project 5 Build - Image 7" />
+            </div>
+        </div>
+    </div>
+</main>
+<footer>
+    © 2025 Morgan — Programmer & Technician
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script>
+    // Modal functionality for images
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.querySelector('.modal-image');
+    const closeBtn = document.querySelector('.close');
+    const galleryImages = document.querySelectorAll('.image-grid img');
+
+    // Open modal when image is clicked
+    galleryImages.forEach(img => {
+        img.addEventListener('click', function() {
+            modal.style.display = 'block';
+            modalImage.src = this.src;
+            modalImage.alt = this.alt;
+        });
+    });
+
+    // Close modal when close button is clicked
+    closeBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
+
+    // Close modal when clicking outside the image
+    modal.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            modal.style.display = 'none';
+        }
+    });
+</script>
+</body>
+</html>

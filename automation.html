@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Automation Skills — Morgan</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        .token.comment { color: #6a737d; }
+        .token.keyword { color: #ff7b72; font-weight: bold; }
+        .token.string { color: #a5c9ea; }
+        .token.function { color: #d2a8ff; }
+        .token.number { color: #79c0ff; }
+        .token.operator { color: #ff7b72; }
+        .token.variable { color: #ffa657; }
+        .token.parameter { color: #e6edf3; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Morgan</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="tools.html">Tools & Builds</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+<main>
+    <h2>Automation Skills</h2>
+    <div class="skills-grid">
+        <div class="card">
+            <h3>Batch Scripting</h3>
+            <p><strong>Windows Batch Files:</strong> System automation, file operations, scheduled tasks</p>
+            <p><strong>PowerShell Scripts:</strong> Advanced automation, system administration, reporting</p>
+            <p><strong>Command Line Tools:</strong> System utilities, file processing, data manipulation</p>
+        </div>
+        <div class="card">
+            <h3>Media Workflows</h3>
+            <p><strong>File Organization:</strong> Automated sorting, renaming, metadata management</p>
+            <p><strong>Batch Processing:</strong> Video encoding, image conversion, format standardization</p>
+            <p><strong>Quality Control:</strong> Automated checking, error detection, consistency validation</p>
+        </div>
+        <div class="card">
+            <h3>Process Optimization</h3>
+            <p><strong>Workflow Design:</strong> Streamlining operations, reducing manual effort</p>
+            <p><strong>Error Handling:</strong> Robust scripts with logging and recovery mechanisms</p>
+            <p><strong>Scalability:</strong> Solutions that grow with increasing demands</p>
+        </div>
+    </div>
+
+    <h3>Script Examples</h3>
+
+    <h4>Batch Subtitle Renaming Script</h4>
+    <p>This Windows batch script automatically renames subtitle files to match their corresponding video filenames:</p>
+    <pre><code class="language-batch">@echo off
+setlocal enabledelayedexpansion
+
+REM Align subtitles with video filenames in the same folder
+
+for %%A in (.mkv .mp4) do (
+    set base=%%~nA
+    for %%B in (.srt) do (
+        set sub=%%~nB
+        if I !sub! neq !base! (
+            echo Renaming %%B to !base!.srt
+            ren %%B !base!.srt
+            goto continue
+        )
+    )
+    continue
+)</code></pre>
+
+    <h4>Media Library Normalizer (Python)</h4>
+    <p>This Python script standardizes TV show episode filenames using regex pattern matching:</p>
+    <pre><code class="language-python">import os
+import re
+
+pattern = re.compile(r"S(\d{2})E(\d{2})")
+
+for file in os.listdir("."):
+    match = pattern.search(file)
+    if match:
+        season, episode = match.groups()
+        new_name = f"The Rookie - S{season}E{episode}.mkv"
+        os.rename(file, new_name)
+        print(f"Renamed: {file} -> {new_name}")</code></pre>
+</main>
+<footer>
+    © 2025 Morgan — Programmer & Technician
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>
