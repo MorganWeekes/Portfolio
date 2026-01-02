@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Digital Whiteboard — Morgan</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../style.css" />
     <style>
         .whiteboard-container {
             max-width: 1200px;
@@ -98,7 +98,7 @@
 <header>
     <h1>Morgan</h1>
     <nav>
-        <a href="index.html">Home</a>
+        <a href="../index.html">Home</a>
         <a href="about.html">About</a>
         <a href="skills.html">Skills</a>
         <a href="projects.html">Projects</a>
@@ -155,9 +155,22 @@
 
     function resizeCanvas() {
       const container = canvas.parentElement.parentElement;
-      canvas.width = container.clientWidth - 4; // Account for borders
+      const containerWidth = container.clientWidth - 4; // Account for borders
+      
+      // Save current drawing
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      
+      // Set canvas dimensions
+      canvas.width = containerWidth;
       canvas.height = 600;
-      loadCanvas();
+      
+      // Restore drawing
+      ctx.putImageData(imageData, 0, 0);
+      
+      // If there's saved data, load it
+      if (!imageData.data.some(pixel => pixel !== 0)) {
+        loadCanvas();
+      }
     }
 
     window.addEventListener('resize', resizeCanvas);
@@ -201,9 +214,14 @@
       const rect = canvas.getBoundingClientRect();
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
       const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      
+      // Account for canvas scaling
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+      
       return {
-        x: clientX - rect.left,
-        y: clientY - rect.top
+        x: (clientX - rect.left) * scaleX,
+        y: (clientY - rect.top) * scaleY
       };
     }
 

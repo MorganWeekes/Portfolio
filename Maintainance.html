@@ -1,62 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <title>Maintainance</title>
-      <link rel="icon" type="image/x-icon" href="./Assets/icons/Warning.ico">
-    <script src="https://unpkg.co/gsap@3/dist/gsap.min.js">
-    </script>
-   <link rel="stylesheet" href="./Css/Stylesheet.css">
-</head>
-<body id="page-main">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Under Maintenance — Morgan</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="./Assets/icons/Warning.ico">
     <style>
-        img{
-             transition: transform 0.7s ease-in-out;
+        .maintenance-container {
+            max-width: 600px;
+            margin: 80px auto;
+            text-align: center;
+            padding: 40px 20px;
         }
- img:hover {
-    -webkit-transform: rotate(360deg);
-        -ms-transform: rotate(360deg);
+
+        .warning-icon {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 30px;
+            transition: transform 0.7s ease-in-out;
+        }
+
+        .warning-icon:hover {
             transform: rotate(360deg);
-}
-</style>
-    <header class="mainheader">
-        
-        <nav>
-            <button class="nav-btn" >Home</button>
-            <button class="nav-btn" >About</button>
-            <button class="nav-btn">Contact</button>
-        </nav>
-    </header>
-    <main>
-        <br><br>
-        <br><br>
-        <br><img style="width: 200px;" src="./Assets/Pictures/Warning.png" alt="Logo"><br>
-        <br><br>
-        <p id="maintext" class="maintext">Under Maintainance</p>
-        
+        }
 
+        .maintenance-title {
+            font-size: 2.5rem;
+            color: #58a6ff;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .maintenance-message {
+            font-size: 1.2rem;
+            color: #8b949e;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .maintenance-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: #d29922;
+            color: #0d1117;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            border-left: 4px solid #58a6ff;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <div class="maintenance-container">
+        <img src="./Assets/Pictures/Warning.png" alt="Under Maintenance" class="warning-icon" />
         
+        <h1 class="maintenance-title">Under Maintenance</h1>
+        
+        <div class="maintenance-card">
+            <span class="status-badge">🔧 Maintenance Mode</span>
+            
+            <p class="maintenance-message">
+                This page is currently being updated to bring you an even better experience. 
+                We're working on improvements and will be back shortly.
+            </p>
+        </div>
     </div>
-        
-    </main>
+</main>
 
-       <script>
-        var uAgent = window.navigator.userAgent;
-        if(uAgent.includes("Android") || uAgent.includes("iPhone") ){
-document.getElementById("page-main").style = "height: " + window.outerHeight + "px"
-        }
-        else{
-              document.getElementById("page-main").style = "height: " + (window.outerHeight-121) + "px"
-  
-        window.addEventListener('resize', function() {
-             document.getElementById("page-main").style = "height: " + (window.outerHeight-121) + "px"
-  
-            });
-        }
-        </script>
+<footer>
+    © 2025 Morgan — Programmer & Technician
+</footer>
 </body>
 </html>
