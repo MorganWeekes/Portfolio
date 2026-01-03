@@ -5,6 +5,191 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Programming Skills — Morgan</title>
     <link rel="stylesheet" href="../style.css" />
+    <style>
+        .demo-section {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 30px 0;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .demo-title {
+            color: #58a6ff;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .segment-display {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        svg {
+            filter: drop-shadow(0 0 10px rgba(88, 166, 255, 0.3));
+        }
+
+        .segment {
+            transition: fill 0.1s ease;
+        }
+
+        .segment.off {
+            fill: #0d1117;
+            stroke: #30363d;
+            stroke-width: 2;
+        }
+
+        .segment.on {
+            fill: #ff4444;
+            stroke: #ff0000;
+            stroke-width: 2;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .editor-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .editor-panel {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .editor-label {
+            color: #58a6ff;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        textarea {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            color: #58a6ff;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            resize: vertical;
+            min-height: 200px;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #58a6ff;
+            box-shadow: 0 0 5px rgba(88, 166, 255, 0.3);
+        }
+
+        .output-panel {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            color: #58a6ff;
+            font-size: 0.9rem;
+            overflow-y: auto;
+            min-height: 200px;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .output-panel.error {
+            color: #ff4444;
+        }
+
+        button {
+            background: #58a6ff;
+            color: #0d1117;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        button:hover {
+            background: #79c0ff;
+        }
+
+        button:active {
+            background: #1f6feb;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .button-group button {
+            flex: 1;
+        }
+
+        .info-text {
+            color: #8b949e;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .code-display {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            color: #58a6ff;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+
+        @media (max-width: 768px) {
+            .demo-section {
+                padding: 20px;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .control-group {
+                flex-direction: column;
+            }
+
+            input, button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -42,8 +227,205 @@
         </div>
     </div>
 </main>
+
+<section class="demo-section">
+    <div class="demo-title">7-Segment Display Controller (Interactive Code)</div>
+    
+    <div class="segment-display">
+        <svg width="200" height="300" viewBox="0 0 200 300">
+            <!-- Top segment (a) -->
+            <polygon class="segment off" id="seg-0" points="50,20 150,20 140,35 60,35" />
+            
+            <!-- Top-left segment (b) -->
+            <polygon class="segment off" id="seg-1" points="40,30 55,50 55,120 40,100" />
+            
+            <!-- Top-right segment (c) -->
+            <polygon class="segment off" id="seg-2" points="160,30 145,50 145,120 160,100" />
+            
+            <!-- Middle segment (d) -->
+            <polygon class="segment off" id="seg-3" points="50,135 150,135 140,150 60,150" />
+            
+            <!-- Bottom-left segment (e) -->
+            <polygon class="segment off" id="seg-4" points="40,160 55,180 55,250 40,270" />
+            
+            <!-- Bottom-right segment (f) -->
+            <polygon class="segment off" id="seg-5" points="160,160 145,180 145,250 160,270" />
+            
+            <!-- Bottom segment (g) -->
+            <polygon class="segment off" id="seg-6" points="60,265 140,265 150,280 50,280" />
+        </svg>
+    </div>
+
+    <div class="editor-container">
+        <div class="editor-panel">
+            <div class="editor-label">Code Editor</div>
+            <textarea id="codeEditor" placeholder="// Control the display using the segments array
+// Example:
+// segments[0].active = true;
+// segments.toggle(2);
+// segments.clear();
+// segments.displayNumber(5);">segments[0].active = true;
+segments[1].active = true;</textarea>
+            <div class="button-group">
+                <button onclick="executeCode()">Run Code</button>
+                <button onclick="clearCode()">Clear</button>
+            </div>
+        </div>
+
+        <div class="editor-panel">
+            <div class="editor-label">Output Console</div>
+            <div class="output-panel" id="console">Ready. Enter code and click "Run Code".</div>
+        </div>
+    </div>
+
+    <div class="info-text">
+        <strong>Available Commands:</strong><br>
+        • <code style="color: #79c0ff;">segments[0-6].active = true/false</code> - Control individual segments<br>
+        • <code style="color: #79c0ff;">segments.toggle(index)</code> - Toggle a segment<br>
+        • <code style="color: #79c0ff;">segments.clear()</code> - Turn off all segments<br>
+        • <code style="color: #79c0ff;">segments.displayNumber(0-9)</code> - Display a digit<br>
+        • <code style="color: #79c0ff;">for loop</code> - Iterate with delays (use await with delay)<br>
+        • <code style="color: #79c0ff;">delay(ms)</code> - Wait for milliseconds (use with await)<br>
+        • <code style="color: #79c0ff;">console.log()</code> - Print to output<br>
+        <strong>Example with loop:</strong><br>
+        <code style="color: #79c0ff;">for(let i=0; i&lt;7; i++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;segments[i].active = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;await delay(200);<br>
+}</code>
+    </div>
+</section>
+
+<script>
+// Segment mapping for displaying digits 0-9
+const digitPatterns = {
+    0: [1,1,1,0,1,1,1], // segments 0,1,2,4,5,6
+    1: [0,0,1,0,0,1,0], // segments 2,5
+    2: [1,0,1,1,1,0,1], // segments 0,2,3,4,6
+    3: [1,0,1,1,0,1,1], // segments 0,2,3,5,6
+    4: [0,1,1,1,0,1,0], // segments 1,2,3,5
+    5: [1,1,0,1,0,1,1], // segments 0,1,3,5,6
+    6: [1,1,0,1,1,1,1], // segments 0,1,3,4,5,6
+    7: [1,0,1,0,0,1,0], // segments 0,2,5
+    8: [1,1,1,1,1,1,1], // all segments
+    9: [1,1,1,1,0,1,1]  // segments 0,1,2,3,5,6
+};
+
+// Create segments object for user code
+const segments = [
+    {
+        get active() { return segmentStates[0]; },
+        set active(val) { segmentStates[0] = !!val; updateDisplay(); }
+    },
+    {
+        get active() { return segmentStates[1]; },
+        set active(val) { segmentStates[1] = !!val; updateDisplay(); }
+    },
+    {
+        get active() { return segmentStates[2]; },
+        set active(val) { segmentStates[2] = !!val; updateDisplay(); }
+    },
+    {
+        get active() { return segmentStates[3]; },
+        set active(val) { segmentStates[3] = !!val; updateDisplay(); }
+    },
+    {
+        get active() { return segmentStates[4]; },
+        set active(val) { segmentStates[4] = !!val; updateDisplay(); }
+    },
+    {
+        get active() { return segmentStates[5]; },
+        set active(val) { segmentStates[5] = !!val; updateDisplay(); }
+    },
+    {
+        get active() { return segmentStates[6]; },
+        set active(val) { segmentStates[6] = !!val; updateDisplay(); }
+    }
+];
+
+let segmentStates = [false, false, false, false, false, false, false];
+
+// Create a custom console object
+let consoleOutput = '';
+const customConsole = {
+    log(...args) {
+        consoleOutput += args.join(' ') + '\n';
+    },
+    error(...args) {
+        consoleOutput += '❌ ' + args.join(' ') + '\n';
+    },
+    clear() {
+        consoleOutput = '';
+    }
+};
+
+function updateDisplay() {
+    // Update visual segments
+    segmentStates.forEach((isActive, index) => {
+        const element = document.getElementById(`seg-${index}`);
+        if (isActive) {
+            element.classList.remove('off');
+            element.classList.add('on');
+        } else {
+            element.classList.remove('on');
+            element.classList.add('off');
+        }
+    });
+}
+
+function executeCode() {
+    consoleOutput = '';
+    const code = document.getElementById('codeEditor').value;
+    const consoleDiv = document.getElementById('console');
+    
+    // Helper delay function
+    const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    
+    try {
+        // Execute code in async context to support await
+        (async () => {
+            try {
+                // Evaluate the code with segments, console, and delay available
+                await eval(`
+                    (async () => {
+                        ${code}
+                    })()
+                `);
+                
+                consoleDiv.classList.remove('error');
+                consoleDiv.textContent = consoleOutput || '✓ Code executed successfully.';
+            } catch (error) {
+                consoleDiv.classList.add('error');
+                consoleDiv.textContent = 'Error: ' + error.message;
+            }
+        })();
+    } catch (error) {
+        consoleDiv.classList.add('error');
+        consoleDiv.textContent = 'Error: ' + error.message;
+    }
+}
+
+function clearCode() {
+    document.getElementById('codeEditor').value = '';
+    document.getElementById('console').textContent = 'Ready. Enter code and click "Run Code".';
+    document.getElementById('console').classList.remove('error');
+    segmentStates = [false, false, false, false, false, false, false];
+    updateDisplay();
+}
+
+// Allow Ctrl+Enter to execute code
+document.addEventListener('DOMContentLoaded', () => {
+    const editor = document.getElementById('codeEditor');
+    editor.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+            executeCode();
+        }
+    });
+});
+</script>
+
 <footer>
     © 2025 Morgan — Programmer & Technician
 </footer>
+
 </body>
 </html>

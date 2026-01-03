@@ -80,8 +80,33 @@
 
 
 <footer>
-    © 2025 Morgan — Programmer & Technician | <a href="#" onclick="window.open('http://jellyfin.morganweekes.co.uk', '_blank'); return false;">Jellyfin</a>
+    © 2025 Morgan — Programmer & Technician | <a href="#" onclick="openJellyfin(); return false;">Jellyfin</a>
 </footer>
+
+<script>
+function openJellyfin() {
+    const webUrl = 'http://jellyfin.morganweekes.co.uk';
+    const androidIntent = 'intent://jellyfin.morganweekes.co.uk/#Intent;scheme=http;package=org.jellyfin.mobile;S.browser_fallback_url=' + encodeURIComponent(webUrl) + ';end';
+    const iosAppUrl = 'jellyfin://jellyfin.morganweekes.co.uk';
+    
+    const userAgent = navigator.userAgent;
+    
+    if (/Android/i.test(userAgent)) {
+        // Android: Use intent URL to open Jellyfin app, fallback to browser (not Play Store)
+        window.location.href = androidIntent;
+    } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
+        // iOS: Try jellyfin:// scheme, fallback to web
+        window.location.href = iosAppUrl;
+        setTimeout(function() {
+            window.open(webUrl, '_blank');
+        }, 2000);
+    } else {
+        // Desktop: just open the web URL
+        window.open(webUrl, '_blank');
+    }
+}
+</script>
+
 
 </body>
 </html>
