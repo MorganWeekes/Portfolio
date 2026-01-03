@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Programming Skills — Morgan</title>
     <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" />
     <style>
         .demo-section {
             background: #161b22;
@@ -87,22 +88,95 @@
             font-size: 0.95rem;
         }
 
-        textarea {
+        .code-editor-wrapper {
+            position: relative;
             background: #0d1117;
             border: 1px solid #30363d;
-            color: #58a6ff;
+            border-radius: 6px;
+            min-height: 200px;
+            overflow: hidden;
+        }
+
+        .code-editor-wrapper textarea,
+        .code-editor-wrapper pre,
+        .code-editor-wrapper code {
+            box-sizing: border-box;
+            font-family: 'Cascadia Code', 'Cascadia Mono', 'Consolas', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 20px;
+            tab-size: 4;
+            -moz-tab-size: 4;
+            white-space: pre;
+            letter-spacing: 0;
+            font-weight: 400;
+            word-break: normal;
+            hyphens: none;
+        }
+
+        .code-editor-wrapper .token {
+            font: inherit !important;
+            line-height: inherit !important;
+            letter-spacing: inherit !important;
+            font-weight: 400 !important;
+        }
+
+        /* Override Prism defaults inside our overlay so padding/margins don't desync the layers */
+        .code-editor-wrapper pre[class*="language-"],
+        .code-editor-wrapper code[class*="language-"] {
+            padding: 12px;
+            margin: 0;
+            background: transparent;
+            font: inherit;
+            line-height: inherit;
+            letter-spacing: inherit;
+        }
+
+        .code-editor-wrapper code[class*="language-"] * {
+            font: inherit;
+            line-height: inherit;
+            letter-spacing: inherit;
+        }
+
+        textarea {
+            background: transparent;
+            border: none;
+            color: transparent;
+            caret-color: #58a6ff;
             padding: 12px;
             border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
             resize: vertical;
             min-height: 200px;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            overflow: auto;
+            resize: none;
         }
 
         textarea:focus {
             outline: none;
-            border-color: #58a6ff;
             box-shadow: 0 0 5px rgba(88, 166, 255, 0.3);
+        }
+
+        textarea::selection {
+            background: rgba(88, 166, 255, 0.25);
+        }
+
+        .code-highlight {
+            position: absolute;
+            inset: 0;
+            margin: 0;
+            padding: 12px;
+            overflow: auto;
+            border-radius: 6px;
+            pointer-events: none;
+        }
+
+        .code-highlight code {
+            display: block;
+            min-height: 200px;
         }
 
         .output-panel {
@@ -259,13 +333,16 @@
     <div class="editor-container">
         <div class="editor-panel">
             <div class="editor-label">Code Editor</div>
-            <textarea id="codeEditor" placeholder="// Control the display using the segments array
+            <div class="code-editor-wrapper">
+                <pre aria-hidden="true" class="code-highlight"><code id="codeHighlight" class="language-javascript"></code></pre>
+                <textarea id="codeEditor" placeholder="// Control the display using the segments array
 // Example:
 // segments[0].active = true;
 // segments.toggle(2);
 // segments.clear();
 // segments.displayNumber(5);">segments[0].active = true;
 segments[1].active = true;</textarea>
+            </div>
             <div class="button-group">
                 <button onclick="executeCode()">Run Code</button>
                 <button onclick="clearCode()">Clear</button>
@@ -344,6 +421,32 @@ const segments = [
 
 let segmentStates = [false, false, false, false, false, false, false];
 
+// Helper methods exposed to the in-page editor
+segments.toggle = function(index) {
+    const idx = Number(index);
+    if (!Number.isInteger(idx) || idx < 0 || idx >= segmentStates.length) {
+        throw new Error('Segment index must be between 0 and 6.');
+    }
+    segmentStates[idx] = !segmentStates[idx];
+    updateDisplay();
+    return segmentStates[idx];
+};
+
+segments.clear = function() {
+    segmentStates = segmentStates.map(() => false);
+    updateDisplay();
+};
+
+segments.displayNumber = function(num) {
+    const digit = Number(num);
+    if (!Number.isInteger(digit) || digit < 0 || digit > 9) {
+        throw new Error('displayNumber expects an integer between 0 and 9.');
+    }
+    const pattern = digitPatterns[digit];
+    segmentStates = pattern.map(Boolean);
+    updateDisplay();
+};
+
 // Create a custom console object
 let consoleOutput = '';
 const customConsole = {
@@ -357,6 +460,23 @@ const customConsole = {
         consoleOutput = '';
     }
 };
+
+// Live syntax highlighting for the inline editor
+const codeEditorElement = document.getElementById('codeEditor');
+const codeHighlightElement = document.getElementById('codeHighlight');
+
+function updateHighlight() {
+    if (!codeHighlightElement || !codeEditorElement) return;
+    const content = codeEditorElement.value.endsWith('\n')
+        ? codeEditorElement.value
+        : codeEditorElement.value + '\n';
+    codeHighlightElement.textContent = content;
+    if (window.Prism && typeof Prism.highlightElement === 'function') {
+        Prism.highlightElement(codeHighlightElement);
+    }
+    codeHighlightElement.parentElement.scrollTop = codeEditorElement.scrollTop;
+    codeHighlightElement.parentElement.scrollLeft = codeEditorElement.scrollLeft;
+}
 
 function updateDisplay() {
     // Update visual segments
@@ -374,6 +494,7 @@ function updateDisplay() {
 
 function executeCode() {
     consoleOutput = '';
+    customConsole.clear();
     const code = document.getElementById('codeEditor').value;
     const consoleDiv = document.getElementById('console');
     
@@ -387,6 +508,7 @@ function executeCode() {
                 // Evaluate the code with segments, console, and delay available
                 await eval(`
                     (async () => {
+                        const console = customConsole;
                         ${code}
                     })()
                 `);
@@ -406,6 +528,7 @@ function executeCode() {
 
 function clearCode() {
     document.getElementById('codeEditor').value = '';
+    updateHighlight();
     document.getElementById('console').textContent = 'Ready. Enter code and click "Run Code".';
     document.getElementById('console').classList.remove('error');
     segmentStates = [false, false, false, false, false, false, false];
@@ -415,13 +538,23 @@ function clearCode() {
 // Allow Ctrl+Enter to execute code
 document.addEventListener('DOMContentLoaded', () => {
     const editor = document.getElementById('codeEditor');
+    updateHighlight();
     editor.addEventListener('keydown', (e) => {
         if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
             executeCode();
         }
     });
+
+    editor.addEventListener('input', updateHighlight);
+    editor.addEventListener('scroll', () => {
+        codeHighlightElement.parentElement.scrollTop = editor.scrollTop;
+        codeHighlightElement.parentElement.scrollLeft = editor.scrollLeft;
+    });
 });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
 
 <footer>
     © 2025 Morgan — Programmer & Technician
