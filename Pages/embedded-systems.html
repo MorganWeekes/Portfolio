@@ -20,17 +20,23 @@
     </style>
 </head>
 <body>
-<header>
-    <h1>Morgan</h1>
-    <nav>
-        <a href="../index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="skills.html">Skills</a>
-        <a href="projects.html">Projects</a>
-        <a href="tools.html">Tools & Builds</a>
-        <a href="fun.html">Fun</a>
-        <a href="contact.html">Contact</a>
+<header class="page-header">
+    <nav class="topnav">
+        <a href="../index.html" class="nav-brand">MW</a>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="skills.html">Skills</a>
+            <a href="projects.html">Projects</a>
+            <a href="tools.html">Tools</a>
+            <a href="fun.html">Fun</a>
+            <a href="contact.html">Contact</a>
+        </div>
     </nav>
+    <div class="page-title-bar">
+        <h1>Embedded Systems</h1>
+        <p class="page-sub">Microcontroller programming, LED animation engines and modular hardware design</p>
+    </div>
 </header>
 <main>
     <h2>Embedded Systems Skills</h2>
@@ -81,10 +87,11 @@ void nextPattern() {
     currentPattern = (currentPattern + 1) % (sizeof(patterns) / sizeof(patterns[0]));
 }</code></pre>
 </main>
-<footer>
-    © 2025 Morgan — Programmer & Technician
+<footer class="site-footer">
+    <div class="footer-inner">
+        <span>&copy; 2025 Morgan Weekes &mdash; IT Specialist</span>
+    </div>
 </footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 </body>
 </html>

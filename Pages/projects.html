@@ -3,35 +3,70 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Projects — Morgan</title>
+    <title>Projects — Morgan Weekes | IT Specialist</title>
     <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
-<header>
-    <h1>Morgan</h1>
-    <nav>
-        <a href="../index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="skills.html">Skills</a>
-        <a href="projects.html">Projects</a>
-        <a href="tools.html">Tools & Builds</a>
-        <a href="fun.html">Fun</a>
-        <a href="contact.html">Contact</a>
+<header class="page-header">
+    <nav class="topnav">
+        <a href="../index.html" class="nav-brand">MW</a>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="skills.html">Skills</a>
+            <a href="projects.html">Projects</a>
+            <a href="tools.html">Tools</a>
+            <a href="fun.html">Fun</a>
+            <a href="contact.html">Contact</a>
+        </div>
     </nav>
+    <div class="page-title-bar">
+        <h1>Projects</h1>
+        <p class="page-sub">Embedded systems, automation tooling and hardware builds</p>
+    </div>
 </header>
 <main>
-    <h2>Projects</h2>
+    <h2>Featured Projects</h2>
+
     <div class="project">
         <h3>LED Animation Engine</h3>
-        <p>Multi-pattern embedded controller with 11+ effects and modular switching logic.</p>
+        <p><strong>Category:</strong> Embedded Systems &nbsp;&middot;&nbsp; <strong>Language:</strong> C/C++</p>
+        <p>Multi-pattern embedded controller with 11+ effects and modular switching logic. Built on a microcontroller platform with a function-pointer dispatch table for zero-overhead pattern switching. Supports wave, pulse, rainbow, strobe and custom sequence modes.</p>
+        <a href="embedded-systems.html" class="card-link">View Details &#x2192;</a>
     </div>
+
     <div class="project">
         <h3>Subtitle Renamer</h3>
-        <p>Batch script to align subtitle filenames with media assets for franchise-level consistency.</p>
+        <p><strong>Category:</strong> Automation &nbsp;&middot;&nbsp; <strong>Language:</strong> Python / Batch</p>
+        <p>Batch script that aligns subtitle filenames with their corresponding media assets using regex pattern matching. Designed for franchise-level media libraries to ensure consistent, sortable naming across hundreds of files.</p>
+        <a href="automation.html" class="card-link">View Details &#x2192;</a>
+    </div>
+
+    <div class="project">
+        <h3>System Info Scanner</h3>
+        <p><strong>Category:</strong> Tools &nbsp;&middot;&nbsp; <strong>Language:</strong> C#</p>
+        <p>Windows Forms application using WMI and system registry to extract comprehensive hardware data: CPU, GPU, RAM, storage, OS version and network interfaces. Exportable report output for documentation.</p>
+        <a href="system-info-scanner.html" class="card-link">View Details &#x2192;</a>
+    </div>
+
+    <div class="project">
+        <h3>Auto Install Utility</h3>
+        <p><strong>Category:</strong> Tools &nbsp;&middot;&nbsp; <strong>Language:</strong> Batch / PowerShell</p>
+        <p>Deployment tool for rapid PC setup. Installs a curated software stack with hardware-specific logic, progress tracking, and minimal technician input required.</p>
+        <a href="auto-install.html" class="card-link">View Details &#x2192;</a>
+    </div>
+
+    <div class="project">
+        <h3>Custom PC Builds (x5)</h3>
+        <p><strong>Category:</strong> Hardware &nbsp;&middot;&nbsp; <strong>Role:</strong> Technician / Builder</p>
+        <p>Five documented high-performance builds featuring RGB lighting, liquid cooling, vertical GPU configurations and precision cable management. Gallery available in the Technician section.</p>
+        <a href="technician.html" class="card-link">View Gallery &#x2192;</a>
     </div>
 </main>
-<footer>
-    © 2025 Morgan — Programmer & Technician
+<footer class="site-footer">
+    <div class="footer-inner">
+        <span>&copy; 2025 Morgan Weekes &mdash; IT Specialist</span>
+    </div>
 </footer>
 </body>
 </html>

@@ -3,84 +3,185 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Morgan — Programmer & Technician</title>
+    <title>Morgan Weekes — IT Specialist</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
-<header>
-    <h1>Morgan</h1>
-    <img src="Assets/Pictures/icon.png" alt="Morgan - Programmer & Technician" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #30363d; display: block; margin: 20px auto;" />
-    <p>Computer Programmer • Technician • Embedded Systems Designer</p>
+<!-- ====== HERO ====== -->
+<header class="hero">
+    <nav class="topnav">
+        <div class="nav-brand">MW</div>
+        <div class="nav-links">
+            <a href="pages/about.html">About</a>
+            <a href="pages/skills.html">Skills</a>
+            <a href="pages/projects.html">Projects</a>
+            <a href="pages/tools.html">Tools</a>
+            <a href="pages/fun.html">Fun</a>
+            <a href="pages/contact.html">Contact</a>
+        </div>
+    </nav>
+    <div class="hero-content">
+        <img src="Assets/Pictures/icon.png" alt="Morgan Weekes" class="avatar" />
+        <div class="hero-badge">&#x2022; Available for Work</div>
+        <h1>Morgan Weekes</h1>
+        <p class="hero-title">IT Specialist &amp; Systems Technician</p>
+        <p class="hero-sub">Diagnostics &nbsp;·&nbsp; Automation &nbsp;·&nbsp; Embedded Systems &nbsp;·&nbsp; Custom Builds</p>
+        <div class="hero-cta">
+            <a href="pages/projects.html" class="btn btn-primary">View Projects</a>
+            <a href="pages/contact.html" class="btn btn-outline">Get in Touch</a>
+        </div>
+    </div>
 </header>
 
-<nav>
-    <a href="pages/about.html">About</a>
-    <a href="pages/skills.html">Skills</a>
-    <a href="pages/projects.html">Projects</a>
-    <a href="pages/tools.html">Tools & Builds</a>
-    <a href="pages/fun.html">Fun</a>
-    <a href="pages/contact.html">Contact</a>
-</nav>
-
-<section id="about">
-    <h2>About Me</h2>
-    <p>
-        I specialize in diagnostics, embedded systems, and modular design. My work spans hardware builds,
-        automation tools, and clean, extensible code architecture.
-    </p>
-</section>
-<section id="index-tools">
-    <h2>Tools & Builds</h2>
-    <p>Check out my collection of automation tools and custom PC builds.</p>
-    <div class="tools-grid">
-        <div class="card"><h3><a href="pages/auto-install.html">Auto Install Utility</a></h3><p>Streamlined setup tool for laptops and PCs.</p></div>
-        <div class="card"><h3><a href="pages/browser-image-extractor.html">Browser Image Extractor</a></h3><p>Utility for extracting images from browsers.</p></div>
-        <div class="card"><h3><a href="pages/password-reset.html">Password Reset Tool</a></h3><p>Simple interface for password removal/reset.</p></div>
-        <div class="card"><h3><a href="pages/system-info-scanner.html">System Info Scanner</a></h3><p>Windows app to extract CPU, GPU, RAM data.</p></div>
-        <div class="card"><h3><a href="pages/custom-pc-builds.html">Custom PC Builds</a></h3><p>High-performance RGB builds with liquid cooling.</p></div>
+<!-- ====== STATS BAR ====== -->
+<div class="stats-bar">
+    <div class="stat">
+        <span class="stat-num">50+</span>
+        <span class="stat-label">Systems Maintained</span>
     </div>
-</section>
-<section id="skills">
-    <h2>Skills</h2>
-    <div class="skills-grid">
-        <div class="card"><h3><a href="pages/programming.html">Programming</a></h3><p>C, C++, Python, C#, Unity, Embedded scripting</p></div>
-        <div class="card"><h3><a href="pages/technician.html">Technician</a></h3><p>Diagnostics, OS installs, networking, hardware repair</p></div>
-        <div class="card"><h3><a href="pages/automation.html">Automation</a></h3><p>Batch scripting, file renaming, media workflows</p></div>
-        <div class="card"><h3><a href="pages/embedded-systems.html">Embedded Systems</a></h3><p>LED engines, microcontroller logic, modular effects</p></div>
+    <div class="stat">
+        <span class="stat-num">10+</span>
+        <span class="stat-label">Tools Built</span>
     </div>
-</section>
-
-<section id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-        <h3>LED Animation Engine</h3>
-        <p>Multi-pattern embedded controller with 11+ effects and modular switching logic.</p>
+    <div class="stat">
+        <span class="stat-num">6+</span>
+        <span class="stat-label">Languages</span>
     </div>
-    <div class="project">
-        <h3>Subtitle Renamer</h3>
-        <p>Batch script to align subtitle filenames with media assets for franchise-level consistency.</p>
+    <div class="stat">
+        <span class="stat-num">5+</span>
+        <span class="stat-label">Years Experience</span>
     </div>
-</section>
+</div>
 
+<main class="home-main">
 
-<section id="contact">
-    <h2>Contact</h2>
-    <div class="contact-box">
-        <p>Email: <strong>morganweekes@hotmail.co.uk</strong></p>
-        <p>Location: Nottinghamshire, UK</p>
-        <form action="mailto:morganweekes@hotmail.co.uk" method="post" enctype="text/plain">
-    
-            <input class="button" type="submit" value="Send Message">
+    <!-- ====== CORE COMPETENCIES ====== -->
+    <section id="competencies">
+        <h2><span class="accent">//</span> Core Competencies</h2>
+        <div class="comp-grid">
+            <div class="comp-card">
+                <div class="comp-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>Software Development</h3>
+                <p>C, C++, Python, C# and Unity — from embedded firmware to full desktop applications.</p>
+                <a href="pages/programming.html" class="card-link">View Skills &#x2192;</a>
+            </div>
+            <div class="comp-card">
+                <div class="comp-icon"><i class="fas fa-screwdriver-wrench"></i></div>
+                <h3>Hardware &amp; Repair</h3>
+                <p>Diagnostics, component-level repair, OS installs, networking and custom PC builds.</p>
+                <a href="pages/technician.html" class="card-link">View Skills &#x2192;</a>
+            </div>
+            <div class="comp-card">
+                <div class="comp-icon"><i class="fas fa-terminal"></i></div>
+                <h3>Automation &amp; Scripting</h3>
+                <p>Batch scripting, media workflows, file operations and deployment automation.</p>
+                <a href="pages/automation.html" class="card-link">View Skills &#x2192;</a>
+            </div>
+            <div class="comp-card">
+                <div class="comp-icon"><i class="fas fa-microchip"></i></div>
+                <h3>Embedded Systems</h3>
+                <p>Microcontroller logic, LED animation engines and modular effect architectures.</p>
+                <a href="pages/embedded-systems.html" class="card-link">View Skills &#x2192;</a>
+            </div>
+        </div>
+    </section>
 
-            </form>
-      
+    <!-- ====== FEATURED TOOLS ====== -->
+    <section id="featured-tools">
+        <h2><span class="accent">//</span> Featured Tools</h2>
+        <div class="tools-grid-home">
+            <div class="tool-card">
+                <div class="tool-tag">Utility</div>
+                <h3>Auto Install Utility</h3>
+                <p>Streamlined deployment tool for rapid laptop and PC setup with one-click software installation.</p>
+                <a href="pages/auto-install.html" class="card-link">Learn More &#x2192;</a>
+            </div>
+            <div class="tool-card">
+                <div class="tool-tag">Forensics</div>
+                <h3>Browser Image Extractor</h3>
+                <p>Utility for extracting cached images from browsers — useful in data recovery scenarios.</p>
+                <a href="pages/browser-image-extractor.html" class="card-link">Learn More &#x2192;</a>
+            </div>
+            <div class="tool-card">
+                <div class="tool-tag">Security</div>
+                <h3>Password Reset Tool</h3>
+                <p>Fast interface for Windows password removal and account recovery operations.</p>
+                <a href="pages/password-reset.html" class="card-link">Learn More &#x2192;</a>
+            </div>
+            <div class="tool-card">
+                <div class="tool-tag">Diagnostics</div>
+                <h3>System Info Scanner</h3>
+                <p>Windows application to extract and report CPU, GPU, RAM and storage specifications.</p>
+                <a href="pages/system-info-scanner.html" class="card-link">Learn More &#x2192;</a>
+            </div>
+            <div class="tool-card">
+                <div class="tool-tag">Hardware</div>
+                <h3>Custom PC Builds</h3>
+                <p>High-performance RGB builds with liquid cooling, tailored to client workloads.</p>
+                <a href="pages/custom-pc-builds.html" class="card-link">Learn More &#x2192;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== PROJECTS ====== -->
+    <section id="featured-projects">
+        <h2><span class="accent">//</span> Projects</h2>
+        <div class="proj-list">
+            <div class="proj-item">
+                <div class="proj-meta"><span class="proj-tag">Embedded</span></div>
+                <h3>LED Animation Engine</h3>
+                <p>Multi-pattern embedded controller with 11+ effects and modular switching logic for microcontroller platforms.</p>
+                <a href="pages/embedded-systems.html" class="card-link">Details &#x2192;</a>
+            </div>
+            <div class="proj-item">
+                <div class="proj-meta"><span class="proj-tag">Automation</span></div>
+                <h3>Subtitle Renamer</h3>
+                <p>Batch script that aligns subtitle filenames with media assets for franchise-level library consistency.</p>
+                <a href="pages/automation.html" class="card-link">Details &#x2192;</a>
+            </div>
+            <div class="proj-item proj-item--cta">
+                <div class="proj-meta"><span class="proj-tag">Portfolio</span></div>
+                <h3>All Projects</h3>
+                <p>Browse the full portfolio including hardware builds, software tools and embedded systems work.</p>
+                <a href="pages/projects.html" class="card-link">Browse All &#x2192;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CONTACT ====== -->
+    <section id="home-contact">
+        <h2><span class="accent">//</span> Contact</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <p class="contact-intro">Available for freelance IT support, repairs, custom builds and software development projects across Nottinghamshire and remotely.</p>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>morganweekes@hotmail.co.uk</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-location-dot"></i>
+                    <span>Nottinghamshire, UK</span>
+                </div>
+            </div>
+            <div class="contact-cta">
+                <p class="contact-intro">Get in touch via email or use the contact page for more options.</p>
+                <a href="mailto:morganweekes@hotmail.co.uk" class="btn btn-primary">Send Email</a>
+                <a href="pages/contact.html" class="btn btn-outline" style="margin-top:12px;">Contact Page</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <span>&copy; 2025 Morgan Weekes &mdash; IT Specialist</span>
+        <span class="footer-links">
+            <a href="#" onclick="openJellyfin(); return false;">Jellyfin</a>
+        </span>
     </div>
-</section>
-
-
-<footer>
-    © 2025 Morgan — Programmer & Technician | <a href="#" onclick="openJellyfin(); return false;">Jellyfin</a>
 </footer>
 
 <script>
@@ -88,14 +189,12 @@ function openJellyfin() {
     const webUrl = 'http://jellyfin.morganweekes.co.uk';
     const androidIntent = 'intent://jellyfin.morganweekes.co.uk/#Intent;scheme=http;package=org.jellyfin.mobile;S.browser_fallback_url=' + encodeURIComponent(webUrl) + ';end';
     const iosAppUrl = 'jellyfin://jellyfin.morganweekes.co.uk';
-    
+
     const userAgent = navigator.userAgent;
-    
+
     if (/Android/i.test(userAgent)) {
-        // Android: Use intent URL to open Jellyfin app, fallback to browser (not Play Store)
         window.location.href = androidIntent;
     } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
-        // iOS: Try jellyfin:// scheme, fallback to web
         window.location.href = iosAppUrl;
         setTimeout(function() {
             window.open(webUrl, '_blank');
